@@ -8,6 +8,8 @@ This readme contains a description of the steps to obtain the main results of:
 
 The following sections contain the steps and the libraries used in each of them. All datasets and libraries are open sourced and free to use. If you use any of the following in your pipelines, please cite them properly.
 
+![Abstract](abstract.png)
+
 ## Layout
 
 Several intermediate results are provided in this repository, thus you don’t need to run the whole pipeline. 
