@@ -25,10 +25,9 @@ sarscov2-mirna-discovery
 │   ├── sars-cov2_hairpins.fold       -> sars-cov2_hairpins.fasta and its folding structure.
 │   ├── pre-miRNAs_virus.fasta        -> Hairpin sequences extracted from known virus pre-miRNAs.
 │   ├── pre-miRNAs_virus.fold         -> pre-miRNAs_virus.fasta and its folding structure. 
-│   ├── unlabeled_hairpins.fold       -> Hairpin sequences and its folding structure extracted from 
-|   |                                        the human genome, sampled from sequences that do not code 
-|   |					     pre-miRNAs. Provided by external storage.
-│   └── unlabeled_hairpins.fold       -> sequences_unlabeled_hairpins.fasta and its folding structure.
+│   └── unlabeled_hairpins.fold       -> Hairpin sequences and its folding structure extracted from 
+|                                           the human genome, sampled from sequences that do not code 
+|   					    pre-miRNAs. Provided by external storage.
 │
 ├── features
 │   ├── sars-cov2_hairpins.csv        -> Features extracted from sars-cov2_hairpins.fasta.
@@ -46,8 +45,8 @@ sarscov2-mirna-discovery
 |   ├── link_DE.R                     -> Script for differential expression analysis.
 |   └── link_Figs.R                   -> Notebook to generate manuscript figures
 |
-├── matures                           -> Mature miRNAs sequences found.
-|
+└── matures                           -> Mature miRNAs sequences found.
+
 ```
 
 ##  Data preparation
