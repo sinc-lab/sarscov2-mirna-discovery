@@ -25,14 +25,16 @@ sarscov2-mirna-discovery
 │   ├── sars-cov2_hairpins.fold       -> sars-cov2_hairpins.fasta and its folding structure.
 │   ├── pre-miRNAs_virus.fasta        -> Hairpin sequences extracted from known virus pre-miRNAs.
 │   ├── pre-miRNAs_virus.fold         -> pre-miRNAs_virus.fasta and its folding structure. 
-│   ├── unlabeled_hairpins.fasta      -> Hairpin sequences extracted from the human genome, sampled from 
-|   |                                       sequences that do not code pre-miRNAs.
+│   ├── unlabeled_hairpins.fold       -> Hairpin sequences and its folding structure extracted from 
+|   |                                        the human genome, sampled from sequences that do not code 
+|   |					     pre-miRNAs. Provided by external storage.
 │   └── unlabeled_hairpins.fold       -> sequences_unlabeled_hairpins.fasta and its folding structure.
 │
 ├── features
 │   ├── sars-cov2_hairpins.csv        -> Features extracted from sars-cov2_hairpins.fasta.
 │   ├── pre-miRNAs_virus.csv          -> Features extracted from pre-miRNAs_virus.fasta.
-│   └── unlabeled_hairpins.csv        -> Features extracted from unlabeled_hairpins.fasta.
+│   └── unlabeled_hairpins.csv        -> Features extracted from unlabeled_hairpins.fasta. 
+|					     Provided by external storage.
 │
 ├── models                            -> Trained models.
 │
@@ -72,7 +74,7 @@ To model the positive class, well known pre-miRNAs from viruses hairpins were ex
 RNAfold --noPS --infile=pre-miRNAs_virus.fasta --outfile=pre-miRNAs_virus.fold
 ```
 
-Additional sequences were used to train the mirDNN. A set of 1M hairpin-like sequences from the human genome, which are not pre-miRNAs, were used to model the negative set. This data and further details are available in:
+Additional sequences were used to train the mirDNN. A set of 1M hairpin-like sequences from the human genome, which are not pre-miRNAs, were used to model the negative set. The folding structure (unlabeled_hairpins.fold) and features (unlabeled_hairpins.csv) for these sequences can be downloaded from (this external repository)[external_repo]. You will only need to download the unlabeled_hairpins.fold if you want to train the mirDNN. This data and further details are available in:
 
 	L.A. Bugnon, C. Yones, J. Raad, D.H. Milone, G. Stegmayer, 
 	“Genome-wide hairpins datasets of animals and plants for novel miRNA prediction” 
