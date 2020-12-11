@@ -54,7 +54,7 @@ sarscov2-mirna-discovery
 ### Download complete genomes
 SARS-CoV-2 genome was obtained from the [NCBI GenBank](https://www.ncbi.nlm.nih.gov/nuccore/1798174254) on March 2020
 
-These .fasta files can be also found in this repository, in the “genomes/” directory.
+These .fasta files can be also found in this repository, in the `genomes/` directory.
 
 ### Extract hairpin-like sequences 
 The SARS-CoV-2 genome .fasta file is cut in overlapping windows using the [Hextractor R package](https://cran.r-project.org/web/packages/HextractoR/index.html). Follow the link instructions to install, and run the main script with the following parameters:    
