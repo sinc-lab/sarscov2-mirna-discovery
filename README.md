@@ -90,7 +90,7 @@ miRNAfe('sars-cov2_hairpins.fasta', 'config/Example_prediction.yaml');
 ```
 The .yaml file is provided with the package. This will be repeated for all the other .fasta files. 
 
-## Training pre-miRNAa prediction models 
+## Training pre-miRNAs prediction models 
 
 The [training notebook](src/train_pre-miRNA_models.ipynb) is provided with instructions to train the OC-SVM, deeSOM and mirDNN classifiers. Doing so may take several hours. 
 
@@ -98,7 +98,7 @@ If you want to directly predict the sequences, you can use the trained models th
 
 ## Finding pre-miRNAs candidates in SARS-CoV-2
 
-The [prediction notebook](src/predict_pre-miRNAs.ipynb) is provided with instructions to use the trained models to rank the SARS-CoV-2 sequences (higher rank is a higher chance of being a pre-miRNA). 
+The [prediction notebook](src/predict_pre-miRNAs.ipynb) is provided with instructions to use the trained models to rank the SARS-CoV-2 sequences (a high rank means a higher chance of being a pre-miRNA). 
 
 ## Predicting miRNAs targets
 
