@@ -106,7 +106,7 @@ Once mature miRNAs were identified by combining MatureBayes predictions and the 
    
 ## Analyzing the down-regulation of the predicted targets
 
-Expression data from RNA-seq experiments involving Calu3 cell-cultures infected with SARS-CoV-2 was downloaded from [GEO-NCBI GSE148729] (ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE148nnn/GSE148729/suppl/GSE148729_Calu3_polyA_series1_readcounts.tsv.gz). The [differential expression script](src/link_DE.R) is provided with all the instructions to identify the set of differentially expressed genes. Following these instructions, the list of deregulated targets and the set of those potentially being silenced by the predicted viral miRNAs can be obtained. 
+Expression data from RNA-seq experiments involving Calu3 cell-cultures infected with SARS-CoV-2 was downloaded from [GEO-NCBI GSE148729](ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE148nnn/GSE148729/suppl/GSE148729_Calu3_polyA_series1_readcounts.tsv.gz). The [differential expression script](src/link_DE.R) is provided with all the instructions to identify the set of differentially expressed genes. Following these instructions, the list of deregulated targets and the set of those potentially being silenced by the predicted viral miRNAs can be obtained. 
 
 ## Multiple sequence alignment
 
