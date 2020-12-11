@@ -1,2 +1,0 @@
-features/unlabeled_hairpins.csv filter=lfs diff=lfs merge=lfs -text
-sequences/unlabeled_hairpins.fold filter=lfs diff=lfs merge=lfs -text
