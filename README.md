@@ -79,7 +79,7 @@ Then, run the main script with the following parameters:
 
 This script generates a file with several hairpin-like sequences and its corresponding folding structure prediction. 
 
-To model the positive class, well known pre-miRNAs from viruses hairpins were extracted from [mirbase](http://www.mirbase.org/). These sequences were 	folded with ViennaRNA using the following command:
+To model the positive class, well known pre-miRNAs from viruses hairpins were extracted from [mirbase](http://www.mirbase.org/). These sequences were 	folded with RNAfold using the following command:
 
 ```bash
 RNAfold --noPS --infile=sequences/pre-miRNAs_virus.fasta --outfile=sequences/pre-miRNAs_virus.fold
