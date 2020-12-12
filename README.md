@@ -57,12 +57,23 @@ SARS-CoV-2 genome was obtained from the [NCBI GenBank](https://www.ncbi.nlm.nih.
 These .fasta files can be also found in this repository, in the `genomes/` directory.
 
 ### Extract hairpin-like sequences 
-The SARS-CoV-2 genome .fasta file is cut in overlapping windows using the [Hextractor R package](https://cran.r-project.org/web/packages/HextractoR/index.html). Follow the link instructions to install, and run the main script with the following parameters:    
+The SARS-CoV-2 genome .fasta file is cut in overlapping windows using the [Hextractor R package](https://cran.r-project.org/web/packages/HextractoR/index.html). 
+
+You need to have the following software installed in your system:
+- [R](https://www.r-project.org/). 
+- [RNAfold](https://www.tbi.univie.ac.at/RNA/)
+- [BLAST](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
+
+In a R console, install and load the package with:
+```R
+> install.packages("HextractoR)
+> library(HextractoR)
+```
+
+Then, run the main script with the following parameters:    
 
 ```R
-HextractoR(NC_045512.2_Wuhan-Hu-1.fasta, min_valid_nucleotides = 500, window_size = 600, 
-window_step = 100, only_sloop = T, min_length = 60, min_bp = 16, margin_bp = 6, 
-blast_evalue = 0.005, identity_threshold = 90, nthreads = 4, nworks = 4, filter_files = { })
+> HextractoR("genomes/NC_045512.2_Wuhan-Hu-1.fasta", min_valid_nucleotides = 500, window_size = 600, window_step = 100, only_sloop = T, min_length = 60, min_bp = 16, margin_bp = 6, blast_evalue = 0.005, identity_threshold = 90, nthreads = 4, nworks = 4, filter_files = { })
 ```
 
 This script generates a file with several hairpin-like sequences and its corresponding folding structure prediction. 
