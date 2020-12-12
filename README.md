@@ -66,7 +66,8 @@ You need to have the following software installed in your system:
 
 In a R console, install and load the package with:
 ```R
-> install.packages("HextractoR)
+> install.packages("snow")
+> install.packages("HextractoR")
 > library(HextractoR)
 ```
 
@@ -78,7 +79,7 @@ Then, run the main script with the following parameters:
 
 This script generates a file with several hairpin-like sequences and its corresponding folding structure prediction. 
 
-To model the positive class, well known pre-miRNAs from viruses hairpins were extracted from [mirbase](http://www.mirbase.org/). These sequences were 	folded with [ViennaRNA](https://www.tbi.univie.ac.at/RNA/). After installation:
+To model the positive class, well known pre-miRNAs from viruses hairpins were extracted from [mirbase](http://www.mirbase.org/). These sequences were 	folded with ViennaRNA using the following command:
 
 ```bash
 RNAfold --noPS --infile=pre-miRNAs_virus.fasta --outfile=pre-miRNAs_virus.fold
