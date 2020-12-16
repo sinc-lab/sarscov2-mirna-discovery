@@ -1,0 +1,9 @@
+pre-miRNA;miRNA;Start;End;Strand;Genomic region;Sequence;Number of Targets;Number of Targets DE;Number of Targets DE DOWN
+SC2V-mir-ORF1ab-1;SC2V-mir-ORF1ab-1-3p;456;477;+;ORF1ab-nsp1;uugaacagcccuauguguucau;234;41;14
+SC2V-mir-ORF1ab-2;SC2V-mir-ORF1ab-2-5p;486;506;+;ORF1ab-nsp1;cggaugcucgaacugcaccuc;17;4;0
+SC2V-mir-M-1;SC2V-mir-M-1-5p;26753;26773;+;Prot M;cgguggaauugcuaucgcaau;53;11;2
+SC2V-mir-M-2;SC2V-mir-M-2-3;26991;27009;+;Prot M;ggacgcugugacaucaagg;5;0;0
+SC2V-mir-M-3;SC2V-mir-M-3-5p;27028;27049;+;Prot M;cuguugcuacaucacgaacgcu;103;9;0
+SC2V-mir-M-3;SC2V-mir-M-3-3p;27069;27090;+;Prot M;gcuucgcagcguguagcaggug;1;0;0
+SC2V-mir-ORF10;SC2V-mir-ORF10-5p;29548;29568;+;ORF10;cacaaggcagaugggcuauau;202;33;6
+SC2V-mir-ORF10;SC2V-mir-ORF10-3p;29592;29613;+;ORF10;cgauauauagucuacucuugug;160;21;7
