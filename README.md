@@ -49,7 +49,7 @@ sarscov2-mirna-discovery
 
 ##  2. Data preparation
 
-Note that all the results generated in this section are provided in  `sequences/`  and  `features/` directories.
+Note that all the results generated in this section are provided in  [`sequences/`](sequences)  and  `features/` directories.
 
 ### 2.1. Download complete genomes
 
