@@ -1,0 +1,38 @@
+Analysis Type:	PANTHER Overrepresentation Test (Released 20200407)
+Annotation Version and Release Date:	Reactome version 65 Released 2019-12-22
+Analyzed List:	fullDEGenesFC1Clean (Homo sapiens )
+Reference List:	RefRNAseqClean (Homo sapiens )
+Test Type:	FISHER
+Correction:	BONFERRONI
+Bonferroni count:	2005
+Reactome pathways	RefRNAseqClean - REFLIST (14012)	fullDEGenesFC1Clean (2301)	fullDEGenesFC1Clean (expected)	fullDEGenesFC1Clean (over/under)	fullDEGenesFC1Clean (fold Enrichment)	fullDEGenesFC1Clean (P-value)
+Interferon alpha/beta signaling (R-HSA-909733)	57	46	9.36	+	4.91	1.11E-10
+Interleukin-10 signaling (R-HSA-6783783)	35	27	5.75	+	4.70	3.42E-05
+Chemokine receptors bind chemokines (R-HSA-380108)	25	19	4.11	+	4.63	5.23E-03
+Interferon gamma signaling (R-HSA-877300)	82	54	13.47	+	4.01	2.92E-10
+Immunoregulatory interactions between a Lymphoid and a non-Lymphoid cell (R-HSA-198933)	47	26	7.72	+	3.37	6.77E-03
+Interferon Signaling (R-HSA-913531)	177	90	29.07	+	3.10	6.95E-13
+Interleukin-4 and Interleukin-13 signaling (R-HSA-6785807)	77	36	12.64	+	2.85	3.49E-03
+Peptide ligand-binding receptors (R-HSA-375276)	83	38	13.63	+	2.79	2.08E-03
+Class A/1 (Rhodopsin-like receptors) (R-HSA-373076)	132	51	21.68	+	2.35	1.95E-03
+GPCR ligand binding (R-HSA-500792)	194	69	31.86	+	2.17	4.58E-04
+Cytokine Signaling in Immune system (R-HSA-1280215)	662	234	108.71	+	2.15	4.29E-19
+Signaling by Interleukins (R-HSA-449147)	354	109	58.13	+	1.88	6.38E-05
+Signaling by GPCR (R-HSA-372790)	443	120	72.75	+	1.65	4.93E-03
+GPCR downstream signalling (R-HSA-388396)	406	109	66.67	+	1.63	2.17E-02
+Immune System (R-HSA-168256)	1569	419	257.66	+	1.63	2.53E-16
+Signal Transduction (R-HSA-162582)	1734	367	284.75	+	1.29	8.19E-03
+Unclassified (UNCLASSIFIED)	6118	910	1004.68	-	.91	0.00E00
+HIV Infection (R-HSA-162906)	213	10	34.98	-	.29	8.00E-03
+Metabolism of RNA (R-HSA-8953854)	644	21	105.76	-	.20	1.10E-18
+Influenza Infection (R-HSA-168254)	147	3	24.14	-	.12	1.38E-03
+Selenoamino acid metabolism (R-HSA-2408522)	109	2	17.90	-	.11	2.80E-02
+HIV Life Cycle (R-HSA-162587)	142	2	23.32	-	.09	3.73E-04
+Translation (R-HSA-72766)	289	4	47.46	-	.08	2.73E-11
+Mitochondrial translation (R-HSA-5368287)	94	1	15.44	-	.06	3.77E-02
+SRP-dependent cotranslational protein targeting to membrane (R-HSA-1799339)	108	1	17.74	-	.06	4.81E-03
+Nucleotide Excision Repair (R-HSA-5696398)	110	1	18.06	-	.06	3.07E-03
+Nonsense-Mediated Decay (NMD) (R-HSA-927802)	111	1	18.23	-	.05	3.22E-03
+Nonsense Mediated Decay (NMD) enhanced by the Exon Junction Complex (EJC) (R-HSA-975957)	111	1	18.23	-	.05	3.22E-03
+Late Phase of HIV Life Cycle (R-HSA-162599)	131	1	21.51	-	.05	1.82E-04
+Processing of Capped Intron-Containing Pre-mRNA (R-HSA-72203)	233	1	38.26	-	.03	3.17E-11

@@ -1,0 +1,11 @@
+Analysis Type:	PANTHER Overrepresentation Test (Released 20200407)
+Annotation Version and Release Date:	PANTHER version 15.0 Released 2020-02-14
+Analyzed List:	fullDEGenesFC1Clean (Homo sapiens )
+Reference List:	RefRNAseqClean (Homo sapiens )
+Test Type:	FISHER
+Correction:	BONFERRONI
+Bonferroni count:	148
+PANTHER Pathways	RefRNAseqClean - REFLIST (14012)	fullDEGenesFC1Clean (2301)	fullDEGenesFC1Clean (expected)	fullDEGenesFC1Clean (over/under)	fullDEGenesFC1Clean (fold Enrichment)	fullDEGenesFC1Clean (P-value)
+p53 pathway (P00059)	80	31	13.14	+	2.36	2.33E-02
+Apoptosis signaling pathway (P00006)	108	37	17.74	+	2.09	3.91E-02
+Unclassified (UNCLASSIFIED)	12029	1862	1975.36	-	.94	0.00E00

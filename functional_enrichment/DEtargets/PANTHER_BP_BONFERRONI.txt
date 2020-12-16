@@ -1,0 +1,82 @@
+Analysis Type:	PANTHER Overrepresentation Test (Released 20200407)
+Annotation Version and Release Date:	PANTHER version 15.0 Released 2020-02-14
+Analyzed List:	fullTargetsDEFC1 (Homo sapiens )
+Reference List:	fullDEGenesFC1Clean (Homo sapiens )
+Test Type:	FISHER
+Correction:	BONFERRONI
+Bonferroni count:	1
+PANTHER GO-Slim Biological Process	fullDEGenesFC1Clean - REFLIST (2301)	fullTargetsDEFC1 (109)	fullTargetsDEFC1 (expected)	fullTargetsDEFC1 (over/under)	fullTargetsDEFC1 (fold Enrichment)	fullTargetsDEFC1 (P-value)
+regulation of dendrite morphogenesis (GO:0048814)	2	2	.09	+	21.11	1.15E-02
+dendrite morphogenesis (GO:0048813)	2	2	.09	+	21.11	1.15E-02
+regulation of dendrite development (GO:0050773)	2	2	.09	+	21.11	1.15E-02
+dendrite development (GO:0016358)	4	2	.19	+	10.56	2.70E-02
+regulation of neuron projection development (GO:0010975)	13	5	.62	+	8.12	9.23E-04
+integrin-mediated signaling pathway (GO:0007229)	6	2	.28	+	7.04	4.75E-02
+regulation of cell morphogenesis involved in differentiation (GO:0010769)	12	4	.57	+	7.04	4.73E-03
+regulation of proteasomal ubiquitin-dependent protein catabolic process (GO:0032434)	6	2	.28	+	7.04	4.75E-02
+regulation of plasma membrane bounded cell projection organization (GO:0120035)	15	5	.71	+	7.04	1.55E-03
+regulation of cell projection organization (GO:0031344)	15	5	.71	+	7.04	1.55E-03
+developmental growth (GO:0048589)	10	3	.47	+	6.33	1.85E-02
+regulation of neuron differentiation (GO:0045664)	17	5	.81	+	6.21	2.45E-03
+growth (GO:0040007)	11	3	.52	+	5.76	2.28E-02
+regulation of nervous system development (GO:0051960)	20	5	.95	+	5.28	4.44E-03
+regulation of cell development (GO:0060284)	20	5	.95	+	5.28	4.44E-03
+regulation of neurogenesis (GO:0050767)	20	5	.95	+	5.28	4.44E-03
+regulation of protein catabolic process (GO:0042176)	12	3	.57	+	5.28	2.75E-02
+regulation of cell morphogenesis (GO:0022604)	16	4	.76	+	5.28	1.09E-02
+regulation of anatomical structure morphogenesis (GO:0022603)	21	5	.99	+	5.03	5.30E-03
+regulation of catabolic process (GO:0009894)	20	4	.95	+	4.22	2.09E-02
+neuron projection development (GO:0031175)	31	6	1.47	+	4.09	5.51E-03
+cell morphogenesis involved in neuron differentiation (GO:0048667)	21	4	.99	+	4.02	2.40E-02
+neuron development (GO:0048666)	33	6	1.56	+	3.84	7.18E-03
+regulation of multicellular organismal development (GO:2000026)	33	6	1.56	+	3.84	7.18E-03
+neuron differentiation (GO:0030182)	40	7	1.89	+	3.69	4.48E-03
+cell part morphogenesis (GO:0032990)	23	4	1.09	+	3.67	3.11E-02
+cell projection morphogenesis (GO:0048858)	23	4	1.09	+	3.67	3.11E-02
+neuron projection morphogenesis (GO:0048812)	23	4	1.09	+	3.67	3.11E-02
+plasma membrane bounded cell projection morphogenesis (GO:0120039)	23	4	1.09	+	3.67	3.11E-02
+regulation of developmental process (GO:0050793)	46	8	2.18	+	3.67	2.47E-03
+regulation of cell differentiation (GO:0045595)	36	6	1.71	+	3.52	1.03E-02
+nervous system development (GO:0007399)	55	9	2.61	+	3.45	1.94E-03
+generation of neurons (GO:0048699)	43	7	2.04	+	3.44	6.36E-03
+neurogenesis (GO:0022008)	45	7	2.13	+	3.28	7.91E-03
+protein modification by small protein conjugation or removal (GO:0070647)	26	4	1.23	+	3.25	4.38E-02
+cell morphogenesis involved in differentiation (GO:0000904)	26	4	1.23	+	3.25	4.38E-02
+regulation of multicellular organismal process (GO:0051239)	53	8	2.51	+	3.19	5.38E-03
+regulation of cellular component organization (GO:0051128)	51	7	2.42	+	2.90	1.42E-02
+cell development (GO:0048468)	53	7	2.51	+	2.79	1.70E-02
+negative regulation of molecular function (GO:0044092)	39	5	1.85	+	2.71	4.60E-02
+positive regulation of gene expression (GO:0010628)	64	8	3.03	+	2.64	1.45E-02
+positive regulation of macromolecule biosynthetic process (GO:0010557)	57	7	2.70	+	2.59	2.35E-02
+positive regulation of biosynthetic process (GO:0009891)	58	7	2.75	+	2.55	2.54E-02
+positive regulation of cellular biosynthetic process (GO:0031328)	58	7	2.75	+	2.55	2.54E-02
+cell projection organization (GO:0030030)	52	6	2.46	+	2.44	4.46E-02
+plasma membrane bounded cell projection organization (GO:0120036)	52	6	2.46	+	2.44	4.46E-02
+multicellular organism development (GO:0007275)	114	13	5.40	+	2.41	6.35E-03
+system development (GO:0048731)	97	11	4.59	+	2.39	8.31E-03
+anatomical structure development (GO:0048856)	138	15	6.54	+	2.29	3.68E-03
+multicellular organismal process (GO:0032501)	160	17	7.58	+	2.24	2.17E-03
+positive regulation of macromolecule metabolic process (GO:0010604)	132	14	6.25	+	2.24	6.04E-03
+positive regulation of protein metabolic process (GO:0051247)	67	7	3.17	+	2.21	4.72E-02
+positive regulation of metabolic process (GO:0009893)	135	14	6.40	+	2.19	6.94E-03
+positive regulation of nitrogen compound metabolic process (GO:0051173)	126	13	5.97	+	2.18	9.89E-03
+developmental process (GO:0032502)	165	17	7.82	+	2.17	4.28E-03
+cellular response to organic substance (GO:0071310)	98	10	4.64	+	2.15	2.79E-02
+protein phosphorylation (GO:0006468)	98	10	4.64	+	2.15	2.79E-02
+phosphorylation (GO:0016310)	108	11	5.12	+	2.15	2.02E-02
+positive regulation of cellular metabolic process (GO:0031325)	127	12	6.02	+	1.99	3.14E-02
+phosphate-containing compound metabolic process (GO:0006796)	142	13	6.73	+	1.93	2.57E-02
+phosphorus metabolic process (GO:0006793)	142	13	6.73	+	1.93	2.57E-02
+positive regulation of biological process (GO:0048518)	233	21	11.04	+	1.90	5.77E-03
+positive regulation of cellular process (GO:0048522)	189	17	8.95	+	1.90	1.27E-02
+cellular response to chemical stimulus (GO:0070887)	123	11	5.83	+	1.89	4.98E-02
+macromolecule modification (GO:0043412)	168	15	7.96	+	1.88	2.38E-02
+cellular protein modification process (GO:0006464)	157	14	7.44	+	1.88	3.25E-02
+protein modification process (GO:0036211)	157	14	7.44	+	1.88	3.25E-02
+regulation of metabolic process (GO:0019222)	289	23	13.69	+	1.68	1.29E-02
+regulation of primary metabolic process (GO:0080090)	268	21	12.70	+	1.65	2.28E-02
+regulation of nitrogen compound metabolic process (GO:0051171)	265	20	12.55	+	1.59	4.65E-02
+regulation of macromolecule metabolic process (GO:0060255)	279	21	13.22	+	1.59	3.64E-02
+regulation of cellular process (GO:0050794)	554	37	26.24	+	1.41	2.26E-02
+regulation of biological process (GO:0050789)	590	39	27.95	+	1.40	2.50E-02
+Unclassified (UNCLASSIFIED)	1190	56	56.37	-	.99	0.00E00
