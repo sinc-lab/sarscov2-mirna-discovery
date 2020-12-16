@@ -43,23 +43,26 @@ sarscov2-mirna-discovery
 |   ├── link_DE.R                     -> Script for differential expression analysis.
 |   └── link_Figs.R                   -> Notebook to generate manuscript figures
 |
-└── matures                           -> Mature miRNAs sequences found.
-
+├── matures                           -> Mature miRNAs sequences found.
+|
+└── targets                           -> Target prediction files
+    ├── miRDB
+    └── Diana
 ```
 
 ##  2. Data preparation
 
-Note that all the results generated in this section are provided in  [`sequences/`](sequences)  and  `features/` directories.
+Note that all the results generated in this section are provided in  [`sequences/`](sequences)  and  [`features/`](features) directories.
 
 ### 2.1. Download complete genomes
 
 SARS-CoV-2 genome was obtained from the [NCBI GenBank](https://www.ncbi.nlm.nih.gov/nuccore/1798174254) on March 2020.
 
-These .fasta files can be also found in this repository, in the `genomes/` directory.
+These ".fasta" files can be also found in this repository, in the [`genomes/`](genomes) directory.
 
 ### 2.2. Extract hairpin-like sequences
 
-The SARS-CoV-2 genome .fasta file is cut in overlapping windows using the [Hextractor R package](https://cran.r-project.org/web/packages/HextractoR/index.html) [2].
+The SARS-CoV-2 genome fasta file is cut in overlapping windows using the [Hextractor R package](https://cran.r-project.org/web/packages/HextractoR/index.html) [[2]](#ref2).
 
 You need to have the following software installed in your system:
 - [R](https://www.r-project.org/). 
@@ -87,24 +90,25 @@ To model the positive class, well known pre-miRNAs from viruses hairpins were ex
 RNAfold --noPS --infile=sequences/pre-miRNAs_virus.fasta --outfile=sequences/pre-miRNAs_virus.fold
 ```
 
-Additional sequences were used to train the mirDNN. A set of 1M hairpin-like sequences from the human genome, which are not pre-miRNAs, were used to model the negative set. The folding structure (unlabeled_hairpins.fold) and features (unlabeled_hairpins.csv) for these sequences can be downloaded from [this external repository](https://sourceforge.net/projects/sourcesinc/files/mirdata/sequences/unlabeled.tar.gz). You will only need to download the unlabeled_hairpins.fold if you want to train the mirDNN. This data and further details are available in [3].
+Additional sequences were used to train the mirDNN. A set of 1M hairpin-like sequences from the human genome, which are not pre-miRNAs, were used to model the negative set. The folding structure (unlabeled_hairpins.fold) and features (unlabeled_hairpins.csv) for these sequences can be downloaded from [this external repository](https://sourceforge.net/projects/sourcesinc/files/mirdata/sequences/unlabeled.tar.gz). You will only need to download the unlabeled_hairpins.fold if you want to train the mirDNN. This data and further details are available in [[3]](#ref3).
 
 At this point, the sequence and folding prediction for each hairpin-like sequence in SARS-CoV-2, the known virus pre-miRNAs and some human non-pre-miRNA sequences are ready.
 
 ### 2.3. Hairpin features extraction
 
-In order to extract meaningful features from the sequences, the [miRNAfe package](http://sourceforge.net/projects/sourcesinc/files/mirnafe/0.90/) was used [4]. Once installed, you can run the feature extraction with:
+In order to extract meaningful features from the sequences, the [miRNAfe package](http://sourceforge.net/projects/sourcesinc/files/mirnafe/0.90/) was used [[4]](#ref4). Once installed, you can run the feature extraction with:
 
 ```matlab
 miRNAfe('sars-cov2_hairpins.fasta', 'config/Example_prediction.yaml');
+miRNAfe('pre-miRNAs_virus.fasta', 'config/Example_prediction.yaml');
 ```
-The .yaml file is provided with the package. This will be repeated for all the other .fasta files. 
+The ".yaml" file is provided with the package.  
 
 ## 3. Training pre-miRNAs prediction models
 
-The [training notebook](src/train_pre-miRNA_models.ipynb) is provided with instructions to train the OC-SVM [5], deeSOM [6] and mirDNN [7] classifiers. Doing so may take several hours. 
+The [training notebook](src/train_pre-miRNA_models.ipynb) is provided with instructions to train the OC-SVM [[5]](#ref5), deeSOM [[6]](#ref6) and mirDNN [[7]](#ref7) classifiers. Doing so may take several hours. 
 
-If you want to directly predict the sequences, you can use the trained models that are provided in `models/` as explained in the following section.
+If you want to directly predict the sequences, you can use the trained models that are provided in [`models/`](models) as explained in the following section.
 
 ## 4. Finding pre-miRNAs candidates in SARS-CoV-2
 
@@ -112,25 +116,25 @@ The [prediction notebook](src/predict_pre-miRNAs.ipynb) is provided with instruc
 
 ## 5. Predicting miRNAs targets
 
-Once mature miRNAs were identified by combining MatureBayes predictions and the small RNA-seq reads profiles, their sequences (provided in  `matures/`) must be  submitted to [Diana MR MicroT](http://diana.imis.athena-innovation.gr/DianaTools/index.php?r=mrmicrot/index) and [miRDB (Custom prediction)](http://www.mirdb.org/custom.html) for predicting human gene targets. 
+Once mature miRNAs were identified by combining MatureBayes predictions and the small RNA-seq reads profiles, their sequences (provided in  [`matures/`](matures)) must be  submitted to [Diana MR MicroT](http://diana.imis.athena-innovation.gr/DianaTools/index.php?r=mrmicrot/index) and [miRDB (Custom prediction)](http://www.mirdb.org/custom.html) for predicting human gene targets. 
 
-The prediction files from miRDB and Diana MR Micro T, one per SARS-CoV-2 miRNA, are provided in the `targets/miRDB/` and `targets/Diana` directories, respectively. Once you have downloaded them, you can run the following bash scripts for extracting the Ensembl identifiers (ID) and the score for each transcript predicted by Diana as being targeted for the viral miRNAs, with a prediction score of 70 or higher. 
+The prediction files from miRDB and Diana MR Micro T, one per SARS-CoV-2 miRNA, are provided in the `[targets/miRDB/`](targets/miRDB/) and [`targets/Diana/`](targets/Diana) directories, respectively. Once you have downloaded them, you can run the following bash scripts for extracting the Ensembl identifiers (ID) and the score for each transcript predicted by Diana as being targeted for the viral miRNAs, with a prediction score of 70 or higher. 
 
 ```bash
 cd targets
 sh ../src/extractIDs
 ```
 
-After running this script, a new directory `targets/Diana/70` will be generated. Inside it, you should obtain the same files that are provided in this repository. Since Diana predicts transcripts and miRDB genes, Ensembl transcripts IDs were mapped to Gene names using the [mapping IDs](mappingIDs.Rmd) R notebook.
+After running this script, a new directory [`targets/Diana/70`](targets/Diana/70/) will be generated. Inside it, you should obtain the same files that are provided in this repository. Since Diana predicts transcripts and miRDB genes, Ensembl transcripts IDs were mapped to Gene names using the [mapping IDs](src/mappingIDs.Rmd) R notebook.
 
-Once you have the Diana files ready (provided here in the `targets/Diana/70` folder, with the suffix `gene`), the following bash script will help you to combine them with miRDB predictions in order to obtain the set of targets that were predicted by both tools with scores predictions of 70 or higher.
+Once you have the Diana files ready (provided here in the [`targets/Diana/70/`](targets/Diana/70) folder, with the suffix `gene`), the following bash script will help you to combine them with miRDB predictions in order to obtain the set of targets that were predicted by both tools with scores predictions of 70 or higher.
 
 ```bash
 cd targets
-sh ../src/jointargets
+sh ../src/jointargets.sh
 ```
 
-After executing the code above, you will obtain eight files called `overlap_<mirna>.tab` with the set of human gene targets predicted for each  `<mirna>`  of the SARS-CoV-2 miRNA (provided here in the “targets/” folder).
+After executing the code above, you will obtain eight files called `overlap_<mirna>.tab` with the set of human gene targets predicted for each  `mirna`  of the SARS-CoV-2 miRNA (provided here in the [`targets/`](targers) folder).
 
 ## 6. Analyzing the down-regulation of the predicted targets
 
@@ -160,27 +164,24 @@ Select the mature miRNA extracted from the candidate sequence in the previous se
 
 ## 8. Figures generation
 
-The [Figures notebook](src/link_Figs.R) is provided with all the instructions to generate Figures 2, 3 and 4. 
+The [Figures notebook](src/link_Figs.R) is provided with all the instructions to generate Figures 2, 3 and 4 of [[1]](#ref1). 
 
 ![Fig3](fig3ab.png)
 
 
-
-
-
 ## References
 
-[1] G.A. Merino, J. Raad, L.A. Bugnon, C. Yones, L. Kamenetzky, J. Claus, F. Ariel, D.H. Milone, G. Stegmayer, "Novel SARS-CoV-2 encoded small RNAs in the passage to humans," Bioinformatics, 2020, [DOI](https://doi.org/10.1093/bioinformatics/btaa1002).
+<a name=ref1></a>[1] G.A. Merino, J. Raad, L.A. Bugnon, C. Yones, L. Kamenetzky, J. Claus, F. Ariel, D.H. Milone, G. Stegmayer, "Novel SARS-CoV-2 encoded small RNAs in the passage to humans," Bioinformatics, 2020, [DOI](https://doi.org/10.1093/bioinformatics/btaa1002).
 
-[2] C. Yones, N. Macchiaroli, L. Kamenetzky, G. Stegmayer, D.H. Milone, "HextractoR: an R package for automatic extraction of hairpins from genome-wide data", 2020, [DOI](https://doi.org/10.1101/2020.10.09.333898).
+<a name=ref2></a>[2] C. Yones, N. Macchiaroli, L. Kamenetzky, G. Stegmayer, D.H. Milone, "HextractoR: an R package for automatic extraction of hairpins from genome-wide data", 2020, [DOI](https://doi.org/10.1101/2020.10.09.333898).
 
-[3] L.A. Bugnon, C. Yones, J. Raad, D.H. Milone, G. Stegmayer,  "Genome-wide hairpins datasets of animals and plants for novel miRNA prediction," Data in Brief, 2019, [DOI](https://doi.org/10.1016/j.dib.2019.104209).
+<a name=ref3></a>[3] L.A. Bugnon, C. Yones, J. Raad, D.H. Milone, G. Stegmayer,  "Genome-wide hairpins datasets of animals and plants for novel miRNA prediction," Data in Brief, 2019, [DOI](https://doi.org/10.1016/j.dib.2019.104209).
 
-[4] C. Yones, G. Stegmayer, L. Kamenetzky, D.H. Milone, "miRNAfe: a comprehensive tool for feature extraction in microRNA prediction," BioSystems, 2015, [DOI](http://dx.doi.org/10.1016/j.biosystems.2015.10.003).
+<a name=ref4></a>[4] C. Yones, G. Stegmayer, L. Kamenetzky, D.H. Milone, "miRNAfe: a comprehensive tool for feature extraction in microRNA prediction," BioSystems, 2015, [DOI](http://dx.doi.org/10.1016/j.biosystems.2015.10.003).
 
-[5] L.A. Bugnon, C. Yones, D.H. Milone, G. Stegmayer, "Genome-wide discovery of pre-miRNAs: comparison of recent approaches based on machine learning," Briefings in Bioinformatics, 2020, [DOI](https://doi.org/10.1093/bib/bbaa184).
+<a name=ref5></a>[5] L.A. Bugnon, C. Yones, D.H. Milone, G. Stegmayer, "Genome-wide discovery of pre-miRNAs: comparison of recent approaches based on machine learning," Briefings in Bioinformatics, 2020, [DOI](https://doi.org/10.1093/bib/bbaa184).
 
-[6] L.A. Bugnon, C. Yones, D.H. Milone, G. Stegmayer, "Deep neural architectures for highly imbalanced data in bioinformatics," IEEE Transactions on Neural Networks and Learning Systems, 2020, [DOI](https://doi.org/10.1109/TNNLS.2019.2914471).
+<a name=ref6></a>[6] L.A. Bugnon, C. Yones, D.H. Milone, G. Stegmayer, "Deep neural architectures for highly imbalanced data in bioinformatics," IEEE Transactions on Neural Networks and Learning Systems, 2020, [DOI](https://doi.org/10.1109/TNNLS.2019.2914471).
 
-[7] C. Yones,  J. Raad,  L.A. Bugnon, D.H. Milone, G. Stegmayer, "High precision in microRNA prediction: a novel genome-wide approach based on convolutional deep residual networks," 2020, [DOI](https://doi.org/10.1101/2020.10.23.352179).
+<a name=ref7></a>[7] C. Yones,  J. Raad,  L.A. Bugnon, D.H. Milone, G. Stegmayer, "High precision in microRNA prediction: a novel genome-wide approach based on convolutional deep residual networks," 2020, [DOI](https://doi.org/10.1101/2020.10.23.352179).
 
