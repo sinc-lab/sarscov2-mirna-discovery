@@ -65,7 +65,7 @@ These ".fasta" files can be also found in this repository, in the [`genomes/`](g
 The SARS-CoV-2 genome fasta file is cut in overlapping windows using the [Hextractor R package](https://cran.r-project.org/web/packages/HextractoR/index.html) [[2]](#ref2).
 
 You need to have the following software installed in your system:
-- [R](https://www.r-project.org/). 
+- [R](https://www.r-project.org/) 
 - [RNAfold](https://www.tbi.univie.ac.at/RNA/)
 - [BLAST](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
 
