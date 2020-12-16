@@ -43,11 +43,15 @@ sarscov2-mirna-discovery
 |   ├── link_DE.R                     -> Script for differential expression analysis.
 |   └── link_Figs.R                   -> Notebook to generate manuscript figures
 |
-├── matures                           -> Mature miRNAs sequences found.
+├── matures                           
+|   └── miRNAs.csv                    -> Mature miRNAs sequences found. 
 |
 └── targets                           -> Target prediction files
     ├── miRDB
-    └── Diana
+    ├── Diana
+    ├── TargetsDE
+    └── overlap_<mirna>.tab            -> Target overlap for each miRNA 
+
 ```
 
 ##  2. Data preparation
@@ -116,12 +120,11 @@ The [prediction notebook](src/predict_pre-miRNAs.ipynb) is provided with instruc
 
 ## 5. Predicting miRNAs targets
 
-Once mature miRNAs were identified by combining MatureBayes predictions and the small RNA-seq reads profiles, their sequences (provided in  [`matures/`](matures)) must be  submitted to [Diana MR MicroT](http://diana.imis.athena-innovation.gr/DianaTools/index.php?r=mrmicrot/index) and [miRDB (Custom prediction)](http://www.mirdb.org/custom.html) for predicting human gene targets. 
+Once mature miRNAs were identified by combining MatureBayes predictions and the small RNA-seq reads profiles, their sequences (provided in  [`matures/miRNAs.csv`](matures/miRNAs.csv)) must be  submitted to [Diana MR MicroT](http://diana.imis.athena-innovation.gr/DianaTools/index.php?r=mrmicrot/index) and [miRDB (Custom prediction)](http://www.mirdb.org/custom.html) for predicting human gene targets. 
 
 The prediction files from miRDB and Diana MR Micro T, one per SARS-CoV-2 miRNA, are provided in the `[targets/miRDB/`](targets/miRDB/) and [`targets/Diana/`](targets/Diana) directories, respectively. Once you have downloaded them, you can run the following bash scripts for extracting the Ensembl identifiers (ID) and the score for each transcript predicted by Diana as being targeted for the viral miRNAs, with a prediction score of 70 or higher. 
 
 ```bash
-cd targets
 sh ../src/extractIDs
 ```
 
@@ -130,15 +133,15 @@ After running this script, a new directory [`targets/Diana/70`](targets/Diana/70
 Once you have the Diana files ready (provided here in the [`targets/Diana/70/`](targets/Diana/70) folder, with the suffix `gene`), the following bash script will help you to combine them with miRDB predictions in order to obtain the set of targets that were predicted by both tools with scores predictions of 70 or higher.
 
 ```bash
-cd targets
 sh ../src/jointargets.sh
 ```
 
-After executing the code above, you will obtain eight files called `overlap_<mirna>.tab` with the set of human gene targets predicted for each  `mirna`  of the SARS-CoV-2 miRNA (provided here in the [`targets/`](targers) folder).
+After executing the code above, you will obtain eight files called `overlap_<mirna>.tab` with the set of human gene targets predicted for each  `mirna`  of the SARS-CoV-2 miRNA (provided here in the [`targets/`](targers) folder). You can explore the number of targets obtained for each miRNA and generate the Fig2**A** of [[1]](#ref1) by using the [targets exploration notebook](src/targetsExploration.Rmd).
+
 
 ## 6. Analyzing the down-regulation of the predicted targets
 
-Expression data from RNA-seq experiments involving Calu3 cell-cultures infected with SARS-CoV-2 was downloaded from GEO-NCBI [GSE148729](ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE148nnn/GSE148729/suppl/GSE148729_Calu3_polyA_series1_readcounts.tsv.gz). The [differential expression script](src/link_DE.R) is provided with all the instructions to identify the set of differentially expressed genes.  
+Expression data from RNA-seq experiments involving Calu3 cell-cultures infected with SARS-CoV-2 was downloaded from GEO-NCBI [GSE148729](ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE148nnn/GSE148729/suppl/GSE148729_Calu3_polyA_series1_readcounts.tsv.gz). The [differential expression notebook](src/link_DE.R) is provided with all the instructions to identify the set of differentially expressed genes. It can be used with: 
 
 ```R
 link_DR()
