@@ -1,0 +1,695 @@
+miRNA Name;Gene Symbol;Gene Description;
+100;submission;PIK3CG;phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit gamma
+100;submission;MTMR12;myotubularin related protein 12
+99;submission;NR3C1;nuclear receptor subfamily 3 group C member 1
+99;submission;PHF20L1;PHD finger protein 20 like 1
+99;submission;RERG;RAS like estrogen regulated growth inhibitor
+99;submission;ATXN1L;ataxin 1 like
+99;submission;ANAPC10;anaphase promoting complex subunit 10
+98;submission;IRF2BP2;interferon regulatory factor 2 binding protein 2
+98;submission;FXR1;FMR1 autosomal homolog 1
+98;submission;DNAJC22;DnaJ heat shock protein family (Hsp40) member C22
+98;submission;NRXN1;neurexin 1
+98;submission;ARHGEF33;Rho guanine nucleotide exchange factor 33
+98;submission;TFAP2D;transcription factor AP-2 delta
+97;submission;IGF2BP2;insulin like growth factor 2 mRNA binding protein 2
+97;submission;SGPP2;sphingosine-1-phosphate phosphatase 2
+96;submission;TET2;tet methylcytosine dioxygenase 2
+96;submission;SMAD2;SMAD family member 2
+96;submission;LATS2;large tumor suppressor kinase 2
+96;submission;AHCYL2;adenosylhomocysteinase like 2
+96;submission;BBS7;Bardet-Biedl syndrome 7
+96;submission;NUMB;NUMB, endocytic adaptor protein
+95;submission;TBX18;T-box 18
+95;submission;ZBTB4;zinc finger and BTB domain containing 4
+95;submission;SPRED1;sprouty related EVH1 domain containing 1
+95;submission;ATL1;atlastin GTPase 1
+95;submission;TSPAN2;tetraspanin 2
+94;submission;SESTD1;SEC14 and spectrin domain containing 1
+94;submission;DCN;decorin
+94;submission;NFU1;NFU1 iron-sulfur cluster scaffold
+94;submission;ABHD3;abhydrolase domain containing 3
+93;submission;NDST3;N-deacetylase and N-sulfotransferase 3
+93;submission;PEX5L;peroxisomal biogenesis factor 5 like
+93;submission;CRADD;CASP2 and RIPK1 domain containing adaptor with death domain
+93;submission;SPACA4;sperm acrosome associated 4
+93;submission;NFKBIZ;NFKB inhibitor zeta
+92;submission;TAF1B;TATA-box binding protein associated factor, RNA polymerase I subunit B
+92;submission;CYP4V2;cytochrome P450 family 4 subfamily V member 2
+92;submission;THBS4;thrombospondin 4
+92;submission;ATP1B2;ATPase Na+/K+ transporting subunit beta 2
+92;submission;ELF2;E74 like ETS transcription factor 2
+92;submission;MBLAC2;metallo-beta-lactamase domain containing 2
+92;submission;MAP3K3;mitogen-activated protein kinase kinase kinase 3
+92;submission;ENOPH1;enolase-phosphatase 1
+92;submission;SFSWAP;splicing factor SWAP
+91;submission;PLXDC2;plexin domain containing 2
+91;submission;UHRF1BP1L;UHRF1 binding protein 1 like
+91;submission;CEP162;centrosomal protein 162
+91;submission;DBX2;developing brain homeobox 2
+91;submission;HPS3;HPS3, biogenesis of lysosomal organelles complex 2 subunit 1
+91;submission;PDE4D;phosphodiesterase 4D
+91;submission;GFPT1;glutamine--fructose-6-phosphate transaminase 1
+91;submission;AP1B1;adaptor related protein complex 1 subunit beta 1
+91;submission;TXK;TXK tyrosine kinase
+91;submission;VSTM2A;V-set and transmembrane domain containing 2A
+91;submission;DGKI;diacylglycerol kinase iota
+91;submission;CA10;carbonic anhydrase 10
+90;submission;ATP1A3;ATPase Na+/K+ transporting subunit alpha 3
+90;submission;CA8;carbonic anhydrase 8
+90;submission;RNF2;ring finger protein 2
+90;submission;FAM76A;family with sequence similarity 76 member A
+90;submission;LARP1;La ribonucleoprotein domain family member 1
+89;submission;ATF7IP;activating transcription factor 7 interacting protein
+89;submission;C16orf72;chromosome 16 open reading frame 72
+89;submission;NIPBL;NIPBL, cohesin loading factor
+89;submission;PTPRA;protein tyrosine phosphatase, receptor type A
+89;submission;ENAM;enamelin
+89;submission;ZCCHC12;zinc finger CCHC-type containing 12
+89;submission;TMEM237;transmembrane protein 237
+89;submission;SPOCK3;SPARC (osteonectin), cwcv and kazal like domains proteoglycan 3
+89;submission;ITM2A;integral membrane protein 2A
+89;submission;TRDN;triadin
+89;submission;RGS21;regulator of G protein signaling 21
+89;submission;MOB4;MOB family member 4, phocein
+89;submission;CACNB2;calcium voltage-gated channel auxiliary subunit beta 2
+89;submission;PQLC2L;PQ loop repeat containing 2 like
+88;submission;SLK;STE20 like kinase
+88;submission;DUSP10;dual specificity phosphatase 10
+88;submission;FAM122B;family with sequence similarity 122B
+88;submission;PIAS3;protein inhibitor of activated STAT 3
+88;submission;HNMT;histamine N-methyltransferase
+88;submission;LRRC19;leucine rich repeat containing 19
+88;submission;PTH2R;parathyroid hormone 2 receptor
+88;submission;EN2;engrailed homeobox 2
+88;submission;UBE2H;ubiquitin conjugating enzyme E2 H
+87;submission;DACT1;dishevelled binding antagonist of beta catenin 1
+87;submission;NSL1;NSL1, MIS12 kinetochore complex component
+87;submission;FAM126B;family with sequence similarity 126 member B
+87;submission;HSPA4L;heat shock protein family A (Hsp70) member 4 like
+87;submission;PXK;PX domain containing serine/threonine kinase like
+87;submission;ELF1;E74 like ETS transcription factor 1
+87;submission;ADGRB2;adhesion G protein-coupled receptor B2
+87;submission;WDR64;WD repeat domain 64
+87;submission;KDM6A;lysine demethylase 6A
+87;submission;FHDC1;FH2 domain containing 1
+87;submission;TERF1;telomeric repeat binding factor 1
+87;submission;ago-03;argonaute RISC catalytic component 3
+87;submission;CTCFL;CCCTC-binding factor like
+87;submission;MIER1;MIER1 transcriptional regulator
+86;submission;PACSIN1;protein kinase C and casein kinase substrate in neurons 1
+86;submission;CBLN1;cerebellin 1 precursor
+86;submission;FAM133A;family with sequence similarity 133 member A
+86;submission;SPTB;spectrin beta, erythrocytic
+86;submission;MED13;mediator complex subunit 13
+86;submission;SLC24A2;solute carrier family 24 member 2
+86;submission;VWC2;von Willebrand factor C domain containing 2
+86;submission;RGS5;regulator of G protein signaling 5
+86;submission;SHOX2;short stature homeobox 2
+86;submission;KBTBD2;kelch repeat and BTB domain containing 2
+86;submission;PUS7;pseudouridine synthase 7
+86;submission;DOP1B;DOP1 leucine zipper like protein B
+86;submission;ARHGAP42;Rho GTPase activating protein 42
+85;submission;ANKRD12;ankyrin repeat domain 12
+85;submission;AGPS;alkylglycerone phosphate synthase
+85;submission;GVQW2;GVQW motif containing 2
+85;submission;FAM241A;family with sequence similarity 241 member A
+85;submission;LURAP1L;leucine rich adaptor protein 1 like
+85;submission;PRMT3;protein arginine methyltransferase 3
+85;submission;C14orf28;chromosome 14 open reading frame 28
+85;submission;FLJ44635;TPT1-like protein
+85;submission;ABHD18;abhydrolase domain containing 18
+85;submission;NFAT5;nuclear factor of activated T cells 5
+84;submission;HCN1;hyperpolarization activated cyclic nucleotide gated potassium channel 1
+84;submission;TPRG1;tumor protein p63 regulated 1
+84;submission;SLX4IP;SLX4 interacting protein
+84;submission;PRIMPOL;primase and DNA directed polymerase
+84;submission;NEDD4;neural precursor cell expressed, developmentally down-regulated 4, E3 ubiquitin protein ligase
+84;submission;ARHGEF3;Rho guanine nucleotide exchange factor 3
+84;submission;DNMT3A;DNA methyltransferase 3 alpha
+84;submission;BAZ2B;bromodomain adjacent to zinc finger domain 2B
+84;submission;N4BP2;NEDD4 binding protein 2
+84;submission;LEPROT;leptin receptor overlapping transcript
+84;submission;PMP2;peripheral myelin protein 2
+84;submission;NBEAL1;neurobeachin like 1
+84;submission;LPL;lipoprotein lipase
+84;submission;HOXB9;homeobox B9
+83;submission;FRYL;FRY like transcription coactivator
+83;submission;RUNX2;runt related transcription factor 2
+83;submission;PCDH10;protocadherin 10
+83;submission;VEGFA;vascular endothelial growth factor A
+83;submission;CENPK;centromere protein K
+83;submission;CD200R1;CD200 receptor 1
+83;submission;ALG10;ALG10, alpha-1,2-glucosyltransferase
+83;submission;RPL23A;ribosomal protein L23a
+83;submission;HTR5A;5-hydroxytryptamine receptor 5A
+83;submission;XRRA1;X-ray radiation resistance associated 1
+82;submission;SYNGR3;synaptogyrin 3
+82;submission;ADH7;alcohol dehydrogenase 7 (class IV), mu or sigma polypeptide
+82;submission;RBM47;RNA binding motif protein 47
+82;submission;LZTS3;leucine zipper tumor suppressor family member 3
+82;submission;RANBP3L;RAN binding protein 3 like
+82;submission;ZBTB10;zinc finger and BTB domain containing 10
+82;submission;PURG;purine rich element binding protein G
+82;submission;ZNF569;zinc finger protein 569
+82;submission;CEBPB;CCAAT enhancer binding protein beta
+82;submission;TMTC1;transmembrane and tetratricopeptide repeat containing 1
+81;submission;CEP170;centrosomal protein 170
+81;submission;CPNE3;copine 3
+81;submission;CEACAM1;carcinoembryonic antigen related cell adhesion molecule 1
+81;submission;RAB3GAP1;RAB3 GTPase activating protein catalytic subunit 1
+81;submission;NECAB1;N-terminal EF-hand calcium binding protein 1
+81;submission;NAP1L5;nucleosome assembly protein 1 like 5
+81;submission;MGST1;microsomal glutathione S-transferase 1
+81;submission;MKX;mohawk homeobox
+81;submission;ULBP2;UL16 binding protein 2
+81;submission;MECP2;methyl-CpG binding protein 2
+81;submission;PHF3;PHD finger protein 3
+81;submission;COL4A3BP;collagen type IV alpha 3 binding protein
+80;submission;USP6NL;USP6 N-terminal like
+80;submission;TTC6;tetratricopeptide repeat domain 6
+80;submission;UTP14C;UTP14C, small subunit processome component
+80;submission;NCEH1;neutral cholesterol ester hydrolase 1
+80;submission;TTC5;tetratricopeptide repeat domain 5
+80;submission;TPD52L1;TPD52 like 1
+80;submission;SERTAD2;SERTA domain containing 2
+80;submission;METAP2;methionyl aminopeptidase 2
+80;submission;MPHOSPH9;M-phase phosphoprotein 9
+80;submission;SNX13;sorting nexin 13
+80;submission;KIF5A;kinesin family member 5A
+80;submission;RNF141;ring finger protein 141
+80;submission;WASHC5;WASH complex subunit 5
+80;submission;CBX4;chromobox 4
+80;submission;TMEFF2;transmembrane protein with EGF like and two follistatin like domains 2
+80;submission;SLC39A10;solute carrier family 39 member 10
+80;submission;LOC284898;uncharacterized LOC284898
+79;submission;ARPP21;cAMP regulated phosphoprotein 21
+79;submission;GABRR1;gamma-aminobutyric acid type A receptor rho1 subunit
+79;submission;DGKH;diacylglycerol kinase eta
+79;submission;ARHGAP29;Rho GTPase activating protein 29
+79;submission;NKTR;natural killer cell triggering receptor
+79;submission;SERTM1;serine rich and transmembrane domain containing 1
+79;submission;ZNF592;zinc finger protein 592
+79;submission;DIO1;iodothyronine deiodinase 1
+79;submission;RACGAP1;Rac GTPase activating protein 1
+79;submission;POLQ;DNA polymerase theta
+79;submission;CALM3;calmodulin 3
+79;submission;ALCAM;activated leukocyte cell adhesion molecule
+79;submission;YAF2;YY1 associated factor 2
+79;submission;AMER1;APC membrane recruitment protein 1
+79;submission;PPP2R5E;protein phosphatase 2 regulatory subunit B'epsilon
+79;submission;PARD6G;par-6 family cell polarity regulator gamma
+79;submission;TAX1BP1;Tax1 binding protein 1
+79;submission;NEXMIF;neurite extension and migration factor
+78;submission;STX17;syntaxin 17
+78;submission;TLR7;toll like receptor 7
+78;submission;MRPL3;mitochondrial ribosomal protein L3
+78;submission;MAGEB4;MAGE family member B4
+78;submission;IARS;isoleucyl-tRNA synthetase
+78;submission;GPR63;G protein-coupled receptor 63
+78;submission;ALDOB;aldolase, fructose-bisphosphate B
+78;submission;C18orf63;chromosome 18 open reading frame 63
+78;submission;GABRG2;gamma-aminobutyric acid type A receptor gamma2 subunit
+78;submission;BOD1L1;biorientation of chromosomes in cell division 1 like 1
+78;submission;ADD3;adducin 3
+78;submission;HSPE1-MOB4;HSPE1-MOB4 readthrough
+78;submission;FGD6;FYVE, RhoGEF and PH domain containing 6
+78;submission;VEGFC;vascular endothelial growth factor C
+78;submission;ZSWIM6;zinc finger SWIM-type containing 6
+78;submission;UBTD2;ubiquitin domain containing 2
+78;submission;MINDY2;MINDY lysine 48 deubiquitinase 2
+78;submission;ZNF546;zinc finger protein 546
+78;submission;NT5C1B;5'-nucleotidase, cytosolic IB
+77;submission;SLC13A1;solute carrier family 13 member 1
+77;submission;ZXDB;zinc finger X-linked duplicated B
+77;submission;ACPP;acid phosphatase, prostate
+77;submission;LRP6;LDL receptor related protein 6
+77;submission;KIAA1107;KIAA1107
+77;submission;NDUFC1;NADH:ubiquinone oxidoreductase subunit C1
+77;submission;PEX3;peroxisomal biogenesis factor 3
+77;submission;VXN;vexin
+77;submission;CDH9;cadherin 9
+77;submission;SIRT5;sirtuin 5
+77;submission;TRIM59;tripartite motif containing 59
+77;submission;DCUN1D2;defective in cullin neddylation 1 domain containing 2
+77;submission;AZIN1;antizyme inhibitor 1
+77;submission;CSRNP3;cysteine and serine rich nuclear protein 3
+77;submission;DIDO1;death inducer-obliterator 1
+77;submission;SREK1IP1;SREK1 interacting protein 1
+77;submission;ALG10B;ALG10B, alpha-1,2-glucosyltransferase
+77;submission;IRAK1BP1;interleukin 1 receptor associated kinase 1 binding protein 1
+76;submission;FAM135A;family with sequence similarity 135 member A
+76;submission;PGAP1;post-GPI attachment to proteins 1
+76;submission;TGFBR3;transforming growth factor beta receptor 3
+76;submission;EHMT1;euchromatic histone lysine methyltransferase 1
+76;submission;ST8SIA2;ST8 alpha-N-acetyl-neuraminide alpha-2,8-sialyltransferase 2
+76;submission;STK4;serine/threonine kinase 4
+76;submission;MGA;MGA, MAX dimerization protein
+76;submission;MFAP5;microfibril associated protein 5
+76;submission;PRUNE2;prune homolog 2 with BCH domain
+76;submission;ATP13A3;ATPase 13A3
+76;submission;AP4E1;adaptor related protein complex 4 subunit epsilon 1
+76;submission;TRIM52;tripartite motif containing 52
+76;submission;ZNF638;zinc finger protein 638
+76;submission;IARS2;isoleucyl-tRNA synthetase 2, mitochondrial
+76;submission;WDR17;WD repeat domain 17
+76;submission;BTF3L4;basic transcription factor 3 like 4
+76;submission;ZDHHC8;zinc finger DHHC-type containing 8
+76;submission;MEF2C;myocyte enhancer factor 2C
+75;submission;TMEM170B;transmembrane protein 170B
+75;submission;IGF1;insulin like growth factor 1
+75;submission;LNX2;ligand of numb-protein X 2
+75;submission;ZNF599;zinc finger protein 599
+75;submission;TRMT13;tRNA methyltransferase 13 homolog
+75;submission;ZCCHC8;zinc finger CCHC-type containing 8
+75;submission;HSF5;heat shock transcription factor 5
+75;submission;FAM120A;family with sequence similarity 120A
+75;submission;WWP1;WW domain containing E3 ubiquitin protein ligase 1
+75;submission;HMGXB4;HMG-box containing 4
+75;submission;CMPK1;cytidine/uridine monophosphate kinase 1
+75;submission;MEF2A;myocyte enhancer factor 2A
+75;submission;LRIG1;leucine rich repeats and immunoglobulin like domains 1
+75;submission;SON;SON DNA binding protein
+74;submission;KIF11;kinesin family member 11
+74;submission;VGLL2;vestigial like family member 2
+74;submission;GAS2;growth arrest specific 2
+74;submission;KCNN3;potassium calcium-activated channel subfamily N member 3
+74;submission;ALS2;ALS2, alsin Rho guanine nucleotide exchange factor
+74;submission;DIO2;iodothyronine deiodinase 2
+74;submission;EXOC5;exocyst complex component 5
+74;submission;RAD54B;RAD54 homolog B
+74;submission;EFNB2;ephrin B2
+74;submission;AKTIP;AKT interacting protein
+74;submission;TGFBR2;transforming growth factor beta receptor 2
+74;submission;PHTF2;putative homeodomain transcription factor 2
+74;submission;ARHGEF19;Rho guanine nucleotide exchange factor 19
+74;submission;NUDT10;nudix hydrolase 10
+74;submission;CCDC170;coiled-coil domain containing 170
+74;submission;GHITM;growth hormone inducible transmembrane protein
+74;submission;LATS1;large tumor suppressor kinase 1
+74;submission;KLHL20;kelch like family member 20
+73;submission;ZDHHC20;zinc finger DHHC-type containing 20
+73;submission;GABRR2;gamma-aminobutyric acid type A receptor rho2 subunit
+73;submission;GNG12;G protein subunit gamma 12
+73;submission;SESN3;sestrin 3
+73;submission;TMCO3;transmembrane and coiled-coil domains 3
+73;submission;JAK2;Janus kinase 2
+73;submission;PKIB;cAMP-dependent protein kinase inhibitor beta
+73;submission;EDNRB;endothelin receptor type B
+73;submission;MCL1;MCL1, BCL2 family apoptosis regulator
+73;submission;FOXL2NB;FOXL2 neighbor
+73;submission;ZNF264;zinc finger protein 264
+73;submission;TYSND1;trypsin domain containing 1
+73;submission;C3orf35;chromosome 3 open reading frame 35
+73;submission;TMEM50B;transmembrane protein 50B
+73;submission;EPB41L5;erythrocyte membrane protein band 4.1 like 5
+73;submission;UBE2W;ubiquitin conjugating enzyme E2 W
+73;submission;AKAP6;A-kinase anchoring protein 6
+72;submission;TSPAN12;tetraspanin 12
+72;submission;COG6;component of oligomeric golgi complex 6
+72;submission;FAM177A1;family with sequence similarity 177 member A1
+72;submission;ESYT2;extended synaptotagmin 2
+72;submission;MBD2;methyl-CpG binding domain protein 2
+72;submission;SHISA3;shisa family member 3
+72;submission;EFCAB1;EF-hand calcium binding domain 1
+72;submission;HGC6.3;uncharacterized LOC100128124
+72;submission;DDX46;DEAD-box helicase 46
+72;submission;ASXL1;ASXL transcriptional regulator 1
+72;submission;OOSP2;oocyte secreted protein 2
+72;submission;ZFX;zinc finger protein X-linked
+71;submission;WASHC4;WASH complex subunit 4
+71;submission;VPS37A;VPS37A, ESCRT-I subunit
+71;submission;EMC3;ER membrane protein complex subunit 3
+71;submission;INIP;INTS3 and NABP interacting protein
+71;submission;FUT9;fucosyltransferase 9
+71;submission;GUCY1B1;guanylate cyclase 1 soluble subunit beta 1
+71;submission;DEFA4;defensin alpha 4
+71;submission;PPP1R14C;protein phosphatase 1 regulatory inhibitor subunit 14C
+71;submission;TXLNB;taxilin beta
+71;submission;SNCA;synuclein alpha
+71;submission;RGS7;regulator of G protein signaling 7
+71;submission;PLEC;plectin
+71;submission;TCFL5;transcription factor like 5
+70;submission;AP5M1;adaptor related protein complex 5 subunit mu 1
+70;submission;CALCRL;calcitonin receptor like receptor
+70;submission;PDCD4;programmed cell death 4
+70;submission;INO80D;INO80 complex subunit D
+70;submission;NR4A3;nuclear receptor subfamily 4 group A member 3
+70;submission;IL33;interleukin 33
+70;submission;CYP20A1;cytochrome P450 family 20 subfamily A member 1
+70;submission;PRG4;proteoglycan 4
+70;submission;PLA2G12A;phospholipase A2 group XIIA
+70;submission;LYRM9;LYR motif containing 9
+70;submission;DCUN1D1;defective in cullin neddylation 1 domain containing 1
+70;submission;KLF7;Kruppel like factor 7
+70;submission;DCAF17;DDB1 and CUL4 associated factor 17
+69;submission;DSG1;desmoglein 1
+69;submission;COL8A1;collagen type VIII alpha 1 chain
+69;submission;ARAP1;ArfGAP with RhoGAP domain, ankyrin repeat and PH domain 1
+69;submission;XIAP;X-linked inhibitor of apoptosis
+69;submission;PHACTR4;phosphatase and actin regulator 4
+69;submission;SLC7A13;solute carrier family 7 member 13
+69;submission;ARNT;aryl hydrocarbon receptor nuclear translocator
+69;submission;PURA;purine rich element binding protein A
+69;submission;PRKAA1;protein kinase AMP-activated catalytic subunit alpha 1
+69;submission;CPOX;coproporphyrinogen oxidase
+69;submission;PTPRC;protein tyrosine phosphatase, receptor type C
+69;submission;KCNJ3;potassium voltage-gated channel subfamily J member 3
+69;submission;TMEM265;transmembrane protein 265
+69;submission;FAS;Fas cell surface death receptor
+69;submission;PGBD2;piggyBac transposable element derived 2
+68;submission;GOLGA3;golgin A3
+68;submission;NTRK2;neurotrophic receptor tyrosine kinase 2
+68;submission;SNX7;sorting nexin 7
+68;submission;PITX2;paired like homeodomain 2
+68;submission;IFIT2;interferon induced protein with tetratricopeptide repeats 2
+68;submission;MRC1;mannose receptor C-type 1
+68;submission;CEP44;centrosomal protein 44
+68;submission;ATP5PB;ATP synthase peripheral stalk-membrane subunit b
+68;submission;FSD1L;fibronectin type III and SPRY domain containing 1 like
+68;submission;VAV2;vav guanine nucleotide exchange factor 2
+68;submission;PRDM1;PR/SET domain 1
+68;submission;UTP18;UTP18, small subunit processome component
+68;submission;TGIF2;TGFB induced factor homeobox 2
+67;submission;ROCK2;Rho associated coiled-coil containing protein kinase 2
+67;submission;MED13L;mediator complex subunit 13 like
+67;submission;SLC39A6;solute carrier family 39 member 6
+67;submission;STAU1;staufen double-stranded RNA binding protein 1
+67;submission;TPD52L3;TPD52 like 3
+67;submission;SDHD;succinate dehydrogenase complex subunit D
+67;submission;OLFM3;olfactomedin 3
+67;submission;PTPRD;protein tyrosine phosphatase, receptor type D
+67;submission;FAM117B;family with sequence similarity 117 member B
+67;submission;MS4A7;membrane spanning 4-domains A7
+67;submission;EHF;ETS homologous factor
+67;submission;ADNP;activity dependent neuroprotector homeobox
+67;submission;ZFAND5;zinc finger AN1-type containing 5
+66;submission;YTHDC2;YTH domain containing 2
+66;submission;SGCD;sarcoglycan delta
+66;submission;SLC39A7;solute carrier family 39 member 7
+66;submission;SLITRK3;SLIT and NTRK like family member 3
+66;submission;GLIPR1;GLI pathogenesis related 1
+66;submission;PDK3;pyruvate dehydrogenase kinase 3
+66;submission;ZNF318;zinc finger protein 318
+66;submission;DTWD1;DTW domain containing 1
+66;submission;TM9SF3;transmembrane 9 superfamily member 3
+66;submission;ASPA;aspartoacylase
+66;submission;ASAH1;N-acylsphingosine amidohydrolase 1
+66;submission;ATP2B2;ATPase plasma membrane Ca2+ transporting 2
+66;submission;CXXC4;CXXC finger protein 4
+66;submission;ARHGAP24;Rho GTPase activating protein 24
+66;submission;SLC25A13;solute carrier family 25 member 13
+66;submission;ALDH1L2;aldehyde dehydrogenase 1 family member L2
+66;submission;PGM5;phosphoglucomutase 5
+66;submission;RERE;arginine-glutamic acid dipeptide repeats
+65;submission;SNX2;sorting nexin 2
+65;submission;EIF3D;eukaryotic translation initiation factor 3 subunit D
+65;submission;SLC24A4;solute carrier family 24 member 4
+65;submission;SSBP3;single stranded DNA binding protein 3
+65;submission;FGL2;fibrinogen like 2
+65;submission;ERICH1;glutamate rich 1
+65;submission;CUL2;cullin 2
+65;submission;DCTN5;dynactin subunit 5
+65;submission;WDR36;WD repeat domain 36
+64;submission;DTHD1;death domain containing 1
+64;submission;DNAJB12;DnaJ heat shock protein family (Hsp40) member B12
+64;submission;RASGRP3;RAS guanyl releasing protein 3
+64;submission;PSD3;pleckstrin and Sec7 domain containing 3
+64;submission;KCNQ5;potassium voltage-gated channel subfamily Q member 5
+64;submission;TRPC5;transient receptor potential cation channel subfamily C member 5
+64;submission;GABRE;gamma-aminobutyric acid type A receptor epsilon subunit
+64;submission;FEM1C;fem-1 homolog C
+64;submission;NETO1;neuropilin and tolloid like 1
+64;submission;SEMA3D;semaphorin 3D
+64;submission;ABCB5;ATP binding cassette subfamily B member 5
+64;submission;BMT2;base methyltransferase of 25S rRNA 2 homolog
+64;submission;GRM8;glutamate metabotropic receptor 8
+63;submission;ACVR1C;activin A receptor type 1C
+63;submission;HAND1;heart and neural crest derivatives expressed 1
+63;submission;DCLK1;doublecortin like kinase 1
+63;submission;HSPA14;heat shock protein family A (Hsp70) member 14
+63;submission;CBL;Cbl proto-oncogene
+63;submission;IGSF6;immunoglobulin superfamily member 6
+63;submission;PI15;peptidase inhibitor 15
+63;submission;ZDHHC11;zinc finger DHHC-type containing 11
+63;submission;PAX6;paired box 6
+63;submission;ZNF41;zinc finger protein 41
+63;submission;SERINC5;serine incorporator 5
+63;submission;AHR;aryl hydrocarbon receptor
+63;submission;ABCC1;ATP binding cassette subfamily C member 1
+63;submission;CDC42EP4;CDC42 effector protein 4
+63;submission;ago-04;argonaute RISC catalytic component 4
+63;submission;CHD9;chromodomain helicase DNA binding protein 9
+62;submission;SCN3B;sodium voltage-gated channel beta subunit 3
+62;submission;RABEPK;Rab9 effector protein with kelch motifs
+62;submission;USP15;ubiquitin specific peptidase 15
+62;submission;RAPGEF6;Rap guanine nucleotide exchange factor 6
+62;submission;TMEM215;transmembrane protein 215
+62;submission;TRMT5;tRNA methyltransferase 5
+62;submission;TNFRSF11B;TNF receptor superfamily member 11b
+62;submission;ONECUT2;one cut homeobox 2
+62;submission;ZFYVE16;zinc finger FYVE-type containing 16
+62;submission;MAP4K5;mitogen-activated protein kinase kinase kinase kinase 5
+62;submission;SPATA2;spermatogenesis associated 2
+62;submission;PRPF38A;pre-mRNA processing factor 38A
+62;submission;MSH4;mutS homolog 4
+62;submission;KIDINS220;kinase D interacting substrate 220
+62;submission;OTULINL;OTU deubiquitinase with linear linkage specificity like
+62;submission;SSR3;signal sequence receptor subunit 3
+62;submission;SPCS2;signal peptidase complex subunit 2
+62;submission;RIMKLB;ribosomal modification protein rimK like family member B
+62;submission;USP44;ubiquitin specific peptidase 44
+62;submission;METTL8;methyltransferase like 8
+61;submission;RORA;RAR related orphan receptor A
+61;submission;MDM2;MDM2 proto-oncogene
+61;submission;TRIQK;triple QxxK/R motif containing
+61;submission;GPAM;glycerol-3-phosphate acyltransferase, mitochondrial
+61;submission;CD109;CD109 molecule
+61;submission;AMMECR1;Alport syndrome, mental retardation, midface hypoplasia and elliptocytosis chromosomal region gene 1
+61;submission;DNAJC5;DnaJ heat shock protein family (Hsp40) member C5
+61;submission;C12orf29;chromosome 12 open reading frame 29
+61;submission;SLC17A6;solute carrier family 17 member 6
+61;submission;RBM41;RNA binding motif protein 41
+61;submission;KIF5B;kinesin family member 5B
+61;submission;PLSCR4;phospholipid scramblase 4
+61;submission;RPL34;ribosomal protein L34
+61;submission;ARPIN;actin related protein 2/3 complex inhibitor
+61;submission;ZNF521;zinc finger protein 521
+61;submission;GRID1;glutamate ionotropic receptor delta type subunit 1
+61;submission;PYHIN1;pyrin and HIN domain family member 1
+61;submission;ASB15;ankyrin repeat and SOCS box containing 15
+61;submission;ACVR2B;activin A receptor type 2B
+61;submission;ITFG1;integrin alpha FG-GAP repeat containing 1
+61;submission;SLC30A6;solute carrier family 30 member 6
+61;submission;LRRFIP1;LRR binding FLII interacting protein 1
+61;submission;CETN1;centrin 1
+60;submission;LGR4;leucine rich repeat containing G protein-coupled receptor 4
+60;submission;ZMAT3;zinc finger matrin-type 3
+60;submission;ANKRD44;ankyrin repeat domain 44
+60;submission;SLC37A3;solute carrier family 37 member 3
+60;submission;SLC5A12;solute carrier family 5 member 12
+60;submission;EFHD1;EF-hand domain family member D1
+60;submission;SGIP1;SH3 domain GRB2 like endophilin interacting protein 1
+60;submission;WWC2;WW and C2 domain containing 2
+60;submission;SERP1;stress associated endoplasmic reticulum protein 1
+60;submission;C9orf72;chromosome 9 open reading frame 72
+60;submission;TCEAL8;transcription elongation factor A like 8
+60;submission;DNPEP;aspartyl aminopeptidase
+60;submission;ZC3H18;zinc finger CCCH-type containing 18
+60;submission;IRF5;interferon regulatory factor 5
+60;submission;CHD1;chromodomain helicase DNA binding protein 1
+60;submission;MYC;MYC proto-oncogene, bHLH transcription factor
+60;submission;NEUROD4;neuronal differentiation 4
+60;submission;YAP1;Yes associated protein 1
+60;submission;CADM2;cell adhesion molecule 2
+60;submission;UBE4B;ubiquitination factor E4B
+59;submission;IRAK3;interleukin 1 receptor associated kinase 3
+59;submission;CCDC82;coiled-coil domain containing 82
+59;submission;ABCA1;ATP binding cassette subfamily A member 1
+59;submission;SLC2A13;solute carrier family 2 member 13
+59;submission;SLC16A9;solute carrier family 16 member 9
+59;submission;FZD3;frizzled class receptor 3
+59;submission;TBC1D15;TBC1 domain family member 15
+59;submission;PITPNC1;phosphatidylinositol transfer protein cytoplasmic 1
+59;submission;KLHL24;kelch like family member 24
+59;submission;ACOD1;aconitate decarboxylase 1
+59;submission;ZNF230;zinc finger protein 230
+59;submission;OXR1;oxidation resistance 1
+59;submission;TMED7;transmembrane p24 trafficking protein 7
+58;submission;DNAJB4;DnaJ heat shock protein family (Hsp40) member B4
+58;submission;BACH2;BTB domain and CNC homolog 2
+58;submission;ARHGAP12;Rho GTPase activating protein 12
+58;submission;FANCL;FA complementation group L
+58;submission;STAU2;staufen double-stranded RNA binding protein 2
+58;submission;ZSCAN20;zinc finger and SCAN domain containing 20
+58;submission;HTR2B;5-hydroxytryptamine receptor 2B
+58;submission;ARMCX1;armadillo repeat containing X-linked 1
+58;submission;MERTK;MER proto-oncogene, tyrosine kinase
+58;submission;PCM1;pericentriolar material 1
+58;submission;PABPC1L2A;poly(A) binding protein cytoplasmic 1 like 2A
+58;submission;ZSCAN26;zinc finger and SCAN domain containing 26
+58;submission;sep-11;septin 11
+58;submission;AMD1;adenosylmethionine decarboxylase 1
+58;submission;ABCB10;ATP binding cassette subfamily B member 10
+58;submission;MDFIC;MyoD family inhibitor domain containing
+58;submission;RBMS3;RNA binding motif single stranded interacting protein 3
+57;submission;RIC3;RIC3 acetylcholine receptor chaperone
+57;submission;ZBTB41;zinc finger and BTB domain containing 41
+57;submission;CA2;carbonic anhydrase 2
+57;submission;USP8;ubiquitin specific peptidase 8
+57;submission;ALG5;ALG5, dolichyl-phosphate beta-glucosyltransferase
+57;submission;TRPM7;transient receptor potential cation channel subfamily M member 7
+57;submission;CABP4;calcium binding protein 4
+57;submission;GAREM1;GRB2 associated regulator of MAPK1 subtype 1
+57;submission;ZNF678;zinc finger protein 678
+57;submission;EXD2;exonuclease 3'-5' domain containing 2
+57;submission;PAX4;paired box 4
+57;submission;ZDHHC21;zinc finger DHHC-type containing 21
+57;submission;RNF168;ring finger protein 168
+57;submission;RPAIN;RPA interacting protein
+57;submission;APC;APC, WNT signaling pathway regulator
+57;submission;OTP;orthopedia homeobox
+57;submission;LSM8;LSM8 homolog, U6 small nuclear RNA associated
+57;submission;STXBP1;syntaxin binding protein 1
+57;submission;NFE2L1;nuclear factor, erythroid 2 like 1
+57;submission;ZNF550;zinc finger protein 550
+57;submission;KIAA1147;KIAA1147
+57;submission;KLF3;Kruppel like factor 3
+57;submission;LMAN1;lectin, mannose binding 1
+57;submission;STARD8;StAR related lipid transfer domain containing 8
+56;submission;TMEM200A;transmembrane protein 200A
+56;submission;SNTG1;syntrophin gamma 1
+56;submission;ARL14EP;ADP ribosylation factor like GTPase 14 effector protein
+56;submission;MYO3B;myosin IIIB
+56;submission;CDK6;cyclin dependent kinase 6
+56;submission;DCT;dopachrome tautomerase
+56;submission;TBC1D8B;TBC1 domain family member 8B
+56;submission;FAM206A;family with sequence similarity 206 member A
+56;submission;RAB12;RAB12, member RAS oncogene family
+56;submission;HYLS1;HYLS1, centriolar and ciliogenesis associated
+56;submission;CEMIP2;cell migration inducing hyaluronidase 2
+56;submission;RETREG1;reticulophagy regulator 1
+56;submission;ADARB2;adenosine deaminase, RNA specific B2 (inactive)
+56;submission;UQCRC2;ubiquinol-cytochrome c reductase core protein 2
+56;submission;PRR27;proline rich 27
+56;submission;GINS3;GINS complex subunit 3
+56;submission;CLDN23;claudin 23
+56;submission;AAK1;AP2 associated kinase 1
+56;submission;DIP2C;disco interacting protein 2 homolog C
+56;submission;IGLON5;IgLON family member 5
+56;submission;BBS1;Bardet-Biedl syndrome 1
+56;submission;ZFY;zinc finger protein Y-linked
+56;submission;RNF217;ring finger protein 217
+56;submission;S100Z;S100 calcium binding protein Z
+56;submission;SFXN1;sideroflexin 1
+55;submission;LMLN;leishmanolysin like peptidase
+55;submission;NCOA7;nuclear receptor coactivator 7
+55;submission;CST3;cystatin C
+55;submission;PPP2R2C;protein phosphatase 2 regulatory subunit Bgamma
+55;submission;STAM;signal transducing adaptor molecule
+55;submission;FBXO45;F-box protein 45
+55;submission;DCDC1;doublecortin domain containing 1
+55;submission;PCDHA10;protocadherin alpha 10
+55;submission;PCDHA9;protocadherin alpha 9
+55;submission;PCDHA6;protocadherin alpha 6
+55;submission;PCDHA1;protocadherin alpha 1
+55;submission;PCDHA8;protocadherin alpha 8
+55;submission;PCDHA7;protocadherin alpha 7
+55;submission;PCDHA5;protocadherin alpha 5
+55;submission;PCDHA4;protocadherin alpha 4
+55;submission;PCDHA3;protocadherin alpha 3
+55;submission;PCDHA2;protocadherin alpha 2
+55;submission;PCDHA13;protocadherin alpha 13
+55;submission;PCDHA12;protocadherin alpha 12
+55;submission;PCDHA11;protocadherin alpha 11
+55;submission;PCDHAC2;protocadherin alpha subfamily C, 2
+55;submission;PCDHAC1;protocadherin alpha subfamily C, 1
+55;submission;ANKRD17;ankyrin repeat domain 17
+55;submission;ZZZ3;zinc finger ZZ-type containing 3
+55;submission;SPINDOC;spindlin interactor and repressor of chromatin binding
+55;submission;KMT2D;lysine methyltransferase 2D
+55;submission;ZFP3;ZFP3 zinc finger protein
+55;submission;ZNF75D;zinc finger protein 75D
+55;submission;MAP3K2;mitogen-activated protein kinase kinase kinase 2
+54;submission;USP37;ubiquitin specific peptidase 37
+54;submission;BTN2A2;butyrophilin subfamily 2 member A2
+54;submission;SYT14;synaptotagmin 14
+54;submission;LRRC8D;leucine rich repeat containing 8 VRAC subunit D
+54;submission;FBN3;fibrillin 3
+54;submission;LRRC7;leucine rich repeat containing 7
+54;submission;PKD2;polycystin 2, transient receptor potential cation channel
+54;submission;CCL28;C-C motif chemokine ligand 28
+54;submission;MCUR1;mitochondrial calcium uniporter regulator 1
+54;submission;LMOD1;leiomodin 1
+54;submission;MTERF4;mitochondrial transcription termination factor 4
+54;submission;MYO18B;myosin XVIIIB
+54;submission;STOX2;storkhead box 2
+54;submission;LONRF2;LON peptidase N-terminal domain and ring finger 2
+53;submission;RALA;RAS like proto-oncogene A
+53;submission;SLC1A2;solute carrier family 1 member 2
+53;submission;SELENOT;selenoprotein T
+53;submission;KLHL8;kelch like family member 8
+53;submission;HACE1;HECT domain and ankyrin repeat containing E3 ubiquitin protein ligase 1
+53;submission;FHIT;fragile histidine triad
+53;submission;SGMS1;sphingomyelin synthase 1
+53;submission;SEC62;SEC62 homolog, preprotein translocation factor
+53;submission;ATP5MC3;ATP synthase membrane subunit c locus 3
+53;submission;PRKACB;protein kinase cAMP-activated catalytic subunit beta
+53;submission;SIX4;SIX homeobox 4
+53;submission;HS2ST1;heparan sulfate 2-O-sulfotransferase 1
+52;submission;PRSS23;serine protease 23
+52;submission;CDS2;CDP-diacylglycerol synthase 2
+52;submission;ZCRB1;zinc finger CCHC-type and RNA binding motif containing 1
+52;submission;UBE2B;ubiquitin conjugating enzyme E2 B
+52;submission;NUDT12;nudix hydrolase 12
+52;submission;KL;klotho
+52;submission;ARID3A;AT-rich interaction domain 3A
+52;submission;PRRG4;proline rich and Gla domain 4
+52;submission;ISM1;isthmin 1
+52;submission;ARSJ;arylsulfatase family member J
+52;submission;PHIP;pleckstrin homology domain interacting protein
+52;submission;SNTB2;syntrophin beta 2
+52;submission;ZFHX2;zinc finger homeobox 2
+52;submission;SUPT16H;SPT16 homolog, facilitates chromatin remodeling subunit
+52;submission;PRTG;protogenin
+51;submission;ELAVL4;ELAV like RNA binding protein 4
+51;submission;TBXA2R;thromboxane A2 receptor
+51;submission;GGCT;gamma-glutamylcyclotransferase
+51;submission;PDE3B;phosphodiesterase 3B
+51;submission;NAPEPLD;N-acyl phosphatidylethanolamine phospholipase D
+51;submission;SLC30A10;solute carrier family 30 member 10
+51;submission;DOCK5;dedicator of cytokinesis 5
+51;submission;DOK6;docking protein 6
+51;submission;ANK2;ankyrin 2
+51;submission;BNIP3;BCL2 interacting protein 3
+51;submission;LRRC2;leucine rich repeat containing 2
+51;submission;SEMA5A;semaphorin 5A
+51;submission;CYP2C18;cytochrome P450 family 2 subfamily C member 18
+51;submission;SMC6;structural maintenance of chromosomes 6
+51;submission;CDC42EP3;CDC42 effector protein 3
+51;submission;CGGBP1;CGG triplet repeat binding protein 1
+51;submission;SMPD3;sphingomyelin phosphodiesterase 3
+51;submission;ANKRD13C;ankyrin repeat domain 13C
+51;submission;ZNF326;zinc finger protein 326
+51;submission;DSEL;dermatan sulfate epimerase like
+51;submission;NCK1;NCK adaptor protein 1
+51;submission;NUP37;nucleoporin 37
+50;submission;MED23;mediator complex subunit 23
+50;submission;SLC5A3;solute carrier family 5 member 3
+50;submission;ZBTB34;zinc finger and BTB domain containing 34
+50;submission;ZKSCAN8;zinc finger with KRAB and SCAN domains 8
+50;submission;PLOD2;procollagen-lysine,2-oxoglutarate 5-dioxygenase 2
+50;submission;KSR2;kinase suppressor of ras 2
+50;submission;TNFSF14;TNF superfamily member 14
+50;submission;LONRF3;LON peptidase N-terminal domain and ring finger 3
+50;submission;IPPK;inositol-pentakisphosphate 2-kinase
+50;submission;IL22;interleukin 22
+50;submission;PCDHB3;protocadherin beta 3
+50;submission;HDAC9;histone deacetylase 9
+50;submission;ago-02;argonaute RISC catalytic component 2
+50;submission;HIVEP2;human immunodeficiency virus type I enhancer binding protein 2
+50;submission;PLAGL1;PLAG1 like zinc finger 1
+50;submission;CETN3;centrin 3
+50;submission;MAGOH;mago homolog, exon junction complex subunit
+50;submission;ETV6;ETS variant 6
+50;submission;CHRNA5;cholinergic receptor nicotinic alpha 5 subunit
