@@ -27,31 +27,43 @@ sarscov2-mirna-discovery
 |                                           the human genome, sampled from sequences that do not code 
 |   					    pre-miRNAs. Provided by external storage.
 │
-├── features
+├── pre-miRNAs features
 │   ├── sars-cov2_hairpins.csv        -> Features extracted from sars-cov2_hairpins.fasta.
 │   ├── pre-miRNAs_virus.csv          -> Features extracted from pre-miRNAs_virus.fasta.
 │   └── unlabeled_hairpins.csv        -> Features extracted from unlabeled_hairpins.fasta. 
 |					     Provided by external storage.
 │
-├── models                            -> Trained models.
+├── pre-miRNAs models                 -> Trained models for pre-miRNA prediction.
 │
-├── predictions                       -> Predictions on SARS-CoV2 hairpin sequences by each model.
+├── pre-miRNAs predictions            -> Predictions on SARS-CoV2 hairpin sequences by each model.
 │
 ├── src
-|   ├── train_pre-miRNA_models.ipynb  -> Source code to train the models.
-|   ├── predict_pre-miRNAs.ipynb      -> Source code to predict on SARS-CoV2 sequences.
-|   ├── link_DE.R                     -> Script for differential expression analysis.
+|   ├── train_pre-miRNA_models.ipynb  -> Source code to train the pre-miRNAs prediction models.
+|   ├── predict_pre-miRNAs.ipynb      -> Source code to predict pre-miRNAs on SARS-CoV2 sequences.
+|   ├── DifferentialExpression.Rmd    -> Notebook for differential expression analysis.
+|   ├── deregulatedTargets.sh
+|   ├── DETargetsExploration.Rmd
+|   ├── DOWNDETargetsExploration.Rmd
+|   ├── extractDianaIDs.sh
+|   ├── joinTargets.sh
+|   ├── mappingIDs.Rmd
+|   ├── ORADEGenes.Rmd
+|   ├── ORADETargets.Rmd
+|   ├── targetsExploration.Rmd
 |   └── link_Figs.R                   -> Notebook to generate manuscript figures
 |
 ├── matures                           
 |   └── miRNAs.csv                    -> Mature miRNAs sequences found. 
 |
-└── targets                           -> Target prediction files
-    ├── miRDB
-    ├── Diana
-    ├── TargetsDE
-    └── overlap_<mirna>.tab            -> Target overlap for each miRNA 
-
+├── targets                           -> Target prediction files
+|   ├── miRDB
+|   ├── Diana
+|   ├── TargetsDE
+|   └── overlap_<mirna>.tab            -> Target overlap for each miRNA 
+|
+├── expression_data                    -> Gene expression data
+|
+└── functional_enrichment              -> Functional enrichment results
 ```
 
 ##  2. Data preparation
@@ -141,14 +153,32 @@ After executing the code above, you will obtain eight files called `overlap_<mir
 
 
 ## 6. Analyzing the down-regulation of the predicted targets
+### 6.1 Differential expression and functional enrichment analyses
 
-Expression data from RNA-seq experiments involving Calu3 cell-cultures infected with SARS-CoV-2 was downloaded from GEO-NCBI [GSE148729](ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE148nnn/GSE148729/suppl/GSE148729_Calu3_polyA_series1_readcounts.tsv.gz). The [differential expression notebook](src/link_DE.R) is provided with all the instructions to identify the set of differentially expressed genes. It can be used with: 
+Expression data from RNA-seq experiments involving Calu3 cell-cultures infected with SARS-CoV-2 was downloaded from GEO-NCBI [GSE148729](ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE148nnn/GSE148729/suppl/GSE148729_Calu3_polyA_series1_readcounts.tsv.gz). The [differential expression notebook](src/DifferentialExpression.Rmd) is provided with all the instructions to identify the set of differentially expressed genes. 
 
-```R
-link_DR()
+After identifying the set of deregulated genes, you will be able to perform and analyze their functional enrichment by means of an overrepresentation analysis with [PANTHER](http://pantherdb.org/). For doing this, the [list of deregulated genes](‘expression_data/DEgenes_SARS-CoV-2_Full_FC1.txt’) should be used as the analyzed list and the [list of expressed genes](‘expression_data/refGeneList.txt’) as the reference list. The overrepresentation analysis is conducted by Fisher's exact test with the Bonferroni adjustment for p-value correction. The results for PANTHER GO-slim biological process (BP), PANTHER Pathways and Reactome Pathways annotation datasets are provided in the [‘functional_enrichment/DEgenes’](functional_enrichment/DEgenes) folder. The [overrepresentation analysis R notebook](src/ORADEGenes.Rmd) will guide you to obtain the graphical representation of the obtained results for the PANTHER GO-Slim BP set, shown in Fig2**C** of [[1]](#ref1).  
+
+### 6.2 Identifying deregulated targets
+Once DE analyses have been conducted, the following bash code is used  to find the list of deregulated targets and the set of those potentially being silenced by the predicted viral miRNAs. 
+
+```bash
+sh src/deregulatedTargets.sh
 ```
 
-Following these instructions, the list of deregulated targets and the set of those potentially being silenced by the predicted viral miRNAs can be obtained. 
+The previous bash script will create the ‘targets/targetsDE’ folder. Then, it will compare the miRNA targets and the RNA-seq differential expression (DE) results previously obtained (stored in the [‘expression_data/DE_SARS-CoV-2_Full_FC1.csv’](expression_data/DE_SARS-CoV-2_Full_FC1.csv) file). In the ‘targets/targetsDE’ folder, for each predicted SARS-CoV-2 miRNA, two files (‘overlapDE_overlap_SC2V-mir-<xxx>.tab’ and ‘overlapDOWN_overlap_SC2V-mir-<xxx>.tab’) will be generated, with the names of those genes that were found as deregulated and down-regulated for at least one of the differential expression analyses previously performed. The information contained in these files will be summarized, joining the results of all miRNA targets, in the files [‘targetsDE.txt’](targets/targetsDE/targetsDE.txt) and [‘targetsDEDOWN.txt’]](targets/targetsDE/targetsDEDOWN.txt). Finally, the script will also filter the [‘expression_data/DE_SARS-CoV-2_Full_FC1.csv’](expression_data/DE_SARS-CoV-2_Full_FC1.csv) file for keeping only those deregulated targets, generating the [‘targets/targetsDE/targetsDEgenes_SARS-CoV-2_Full_FC1.csv’](targets/targetsDE/TargetsDEgenes_SARS-CoV-2_Full_FC1.csv) file. 
+
+The number of deregulated targets for each miRNA is explored to generate Fig3**A** of the manuscript by using the [differentially expressed targets exploration notebook](src/DEtargetsExploration.Rmd).
+
+## 6.3 Functional characterization of deregulated targets
+As for analyzing functional enrichment of deregulated genes, the overrepresentation analysis of deregulated targets is also conducted by using [PANTHER](http://pantherdb.org/). Particularly, in this case, the full set of deregulated genes is used as reference list ([‘expression_data/DEgenes_SARS-CoV-2_Full_FC1.txt’](expression_data/DEgenes_SARS-CoV-2_Full_FC1.txt)) and the list of deregulated targets ([‘targets/targetsDE/targetsDE.txt’](targets/targetsDE/targetsDE.txt)) as analyzed list. The results for PANTHER GO-slim BP annotation dataset are provided in the ‘functionalEnrichment/DEtargets’ folder. The [targets overrepresentation analysis R notebook](src/ORADETargets.Rmd) will help you to obtain the graphical representation of the obtained results, shown in Fig3**D** of [[1]](#ref1).
+
+### 6.4 Analysis of down-regulated targets
+
+The list of the 28 targets that were identified as down-regulated potentially being silenced by the novel SARS-CoV-2 miRNAs can be functionally characterized by using the functional classification tool of [PANTHER](http://pantherdb.org/). The results for this step, provided here in the [‘functional_enrichment/DEDOWNTargets/PANTHERClassification.txt’](functional_enrichment/DEDOWNTargets/PANTHERClassification.txt), were manually processed and combined with the DE results to generate a summary file, [‘functional_enrichment/DEDOWNTargets/FunctionalCharacterization.csv’](functional_enrichment/DEDOWNTargets/FunctionalCharacterization.csv). 
+
+The exploration of expression changes and functional characterization of down-regulated targets is carried out using the [down-regulated targets exploration notebook](src/DOWNDETargetsExploration.Rmd). Following it, you will be able to obtain Fig3*B* and Fig3*C* of [[1]](#ref1).  
+
 
 ## 7. Multiple sequence alignment
 
