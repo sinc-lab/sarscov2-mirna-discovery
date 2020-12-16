@@ -125,7 +125,7 @@ Once mature miRNAs were identified by combining MatureBayes predictions and the 
 The prediction files from miRDB and Diana MR Micro T, one per SARS-CoV-2 miRNA, are provided in the `[targets/miRDB/`](targets/miRDB/) and [`targets/Diana/`](targets/Diana) directories, respectively. Once you have downloaded them, you can run the following bash scripts for extracting the Ensembl identifiers (ID) and the score for each transcript predicted by Diana as being targeted for the viral miRNAs, with a prediction score of 70 or higher. 
 
 ```bash
-sh ../src/extractIDs
+sh ../src/extractIDs.sh
 ```
 
 After running this script, a new directory [`targets/Diana/70`](targets/Diana/70/) will be generated. Inside it, you should obtain the same files that are provided in this repository. Since Diana predicts transcripts and miRDB genes, Ensembl transcripts IDs were mapped to Gene names using the [mapping IDs](src/mappingIDs.Rmd) R notebook.
