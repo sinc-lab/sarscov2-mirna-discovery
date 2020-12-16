@@ -1,0 +1,232 @@
+---
+title: "Identifying differentially expressed genes in SARS-CoV-2 infection"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This notebook is aimed to perform differential expression (DE) analysis of human genes 
+due to SARS-CoV-2 infection in cell cultures of the Calu3 cell line, as it is described in the manuscript [*Novel SARS-CoV-2 encoded small RNAs in the passage to humans*](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa1002/6007256). 
+
+```{r include=FALSE, comment = ""}
+if (!("DESeq2" %in% rownames(installed.packages()))){
+    if (!requireNamespace("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+    BiocManager::install("DESeq2")
+}
+if (!("ggplot2" %in% rownames(installed.packages()))){
+    install.packages("ggplot2")
+}
+if (!("BiocParallel" %in% rownames(installed.packages()))){
+    if (!requireNamespace("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+    BiocManager::install("BiocParallel")
+}
+if (!("RColorBrewer" %in% rownames(installed.packages()))){
+    install.packages("RColorBrewer")
+}
+if (!("VennDiagram" %in% rownames(installed.packages()))){
+    install.packages("VennDiagram")
+}
+library(DESeq2)
+library(ggplot2)
+library(BiocParallel)
+library(RColorBrewer)
+library(VennDiagram)
+```
+
+## Data preparation
+
+Before starting, ensure you have downloaded the expression data from [GEO-NCBI GSE148729](ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE148nnn/GSE148729/suppl/GSE148729_Calu3_polyA_series1_readcounts.tsv.gz) in the directory *../expressionData/*. 
+
+```{r}
+DATA <- read.table(file="../expressionData/GSE148729_Calu3_polyA_series1_readcounts.txt", header=TRUE) 
+head(DATA[,1:6])
+```
+
+This matrix has information about Calu3 cell cultures infected by SARS-CoV-1 and by SARS-CoV-2. We will keep only 
+those colums containing gene annotation data and expression data of SARS-CoV-2 infected samples.
+
+```{r}
+DATA <- DATA[,c(1:3,12:16,18,20:23)]
+rownames(DATA) <- DATA[,1]
+dim(DATA)
+```
+
+Genes with a maximum read count across samples of less than two were filtered out as well as Ensembl genes shorter than 200pb.
+
+```{r}
+DATA <- DATA[apply(DATA[,4:ncol(DATA)],1,max) >=2,]
+DATA <- DATA[DATA$length > 200,]
+dim(DATA)
+```
+
+## Differential expression analyses
+
+Beofre starting to perform differential expression (DE) analyses, we need to prepare the design matrix related to the experimental samples. 
+This dataset contains SARS-CoV-2-infected and mock (control) samples from Calu3 cell cultures.
+Mock samples were extracted after 4 and 24 hours upon preparation and the infected ones, after 4, 12, and 24 hours upon infection. 
+
+```{r}
+condition <- do.call(rbind,strsplit(colnames(DATA)[4:ncol(DATA)], split="[.]"))[,2]
+time <- do.call(rbind,strsplit(colnames(DATA)[4:ncol(DATA)], split="[.]"))[,3]
+
+colData <- data.frame(condition=factor(condition, levels=c("mock", "S2")),
+                   time=factor(time, levels=c("4h","12h","24h")))
+rownames(colData) <- colnames(DATA)[4:ncol(DATA)]
+table(colData$condition, colData$time)
+```
+
+### Infected vs Mock at 24 hours upon infection.
+
+The first DE analysis is aimed to compare gene expression in infected vs mock samples, at 24 hours upon infection. 
+
+```{r , message=FALSE, warning=FALSE}
+colDataIM <- colData[colData$time=="24h",]
+countsMat <- round(as.matrix(DATA[,rownames(colDataIM)]))
+rownames(countsMat) <- DATA[,1]
+ddsCOV <- DESeqDataSetFromMatrix(countsMat,colDataIM, design = ~condition)
+
+# Filtering genes having less than 10 total counts
+keep <- rowSums(counts(ddsCOV)) >= 10
+table(keep)
+ddsCOV <- ddsCOV[keep,]
+
+#DE analysis with DESeq2
+ddsCOV <- DESeq(ddsCOV)
+
+```
+
+After model fitting, differentially expressed genes are selected by keeping those having an absolute log2 fold change at least of 1 and adjusted p-value lower than 0.05.
+
+```{r}
+resCOVMockSC224 <- results(ddsCOV, pAdjustMethod = "BH")
+table(!is.na(resCOVMockSC224$padj) & resCOVMockSC224$padj< 0.05 & abs(resCOVMockSC224$log2FoldChange) >=1)
+resCOVMockSC224Filt <- resCOVMockSC224[!is.na(resCOVMockSC224$padj) & resCOVMockSC224$padj< 0.05 &abs(resCOVMockSC224$log2FoldChange) >=1, ]
+resCOVMockSC224Filt <- resCOVMockSC224Filt[order(abs(resCOVMockSC224Filt$log2FoldChange), decreasing = T),]
+resCOVMockSC224Filt$gene <- DATA[rownames(resCOVMockSC224Filt),2]
+head(resCOVMockSC224Filt)
+```
+
+The results table and the name of differentially expressed genes are saved for being used in future steps.
+
+```{r}
+write.table(resCOVMockSC224Filt, file="../expressionData/DE_SARS-CoV-2_Mock_24_FC1.tab", quote = F,sep = "\t")
+write.table(resCOVMockSC224Filt[,"gene"], file="../expressionData/DEgenes_SARS-CoV-2_Mock_24_FC1.txt", quote = F,sep = "\t", row.names = F)
+```
+
+### Deregulation caused by infection.
+
+The following R code is directed to obtain the set of genes that were deregulated after infection. 
+Infection at 4 hours was taken as the reference condition for assessing changes in gene expression at 12 and 24 hours upon infection. 
+
+ 
+```{r , message=FALSE, warning=FALSE}
+colData <- colData[colData$condition=="S2",]
+countsMat <- round(as.matrix(DATA[,rownames(colData)]))
+rownames(countsMat)=DATA[,1]
+ddsCOV <- DESeqDataSetFromMatrix(countsMat,colData, design = ~time)
+
+# Filtering genes having less than 10 total counts
+keep <- rowSums(counts(ddsCOV)) >= 10
+table(keep)
+ddsCOV <- ddsCOV[keep,]
+
+#DE analysis with DESeq2
+ddsCOV <- DESeq(ddsCOV)
+```
+
+Obtaining and saving the results for the comparision 12 vs 4 hours upon infection:
+
+```{r}
+resCOVSC2_4vs12 <- results(ddsCOV, name="time_12h_vs_4h", pAdjustMethod = "BH")
+table(!is.na(resCOVSC2_4vs12$padj) & resCOVSC2_4vs12$padj< 0.05 & abs(resCOVSC2_4vs12$log2FoldChange) >=1)
+
+resCOVSC2_4vs12Filt <- resCOVSC2_4vs12[!is.na(resCOVSC2_4vs12$padj) & resCOVSC2_4vs12$padj< 0.05 &abs(resCOVSC2_4vs12$log2FoldChange) >=1, ]
+resCOVSC2_4vs12Filt <- resCOVSC2_4vs12Filt[order(abs(resCOVSC2_4vs12Filt$log2FoldChange), decreasing = T),]
+resCOVSC2_4vs12Filt$gene <- DATA[rownames(resCOVSC2_4vs12Filt),2]
+write.table(resCOVSC2_4vs12Filt, file="../expressionData/DE_SARS-CoV-2_4_12_FC1.tab", quote = F,sep = "\t")
+```
+
+And now, for the comparision 24 vs 4 hours upon infection:
+
+```{r}
+resCOVSC2_4vs24 <- results(ddsCOV, name="time_24h_vs_4h", pAdjustMethod = "BH")
+table(!is.na(resCOVSC2_4vs24$padj) & resCOVSC2_4vs24$padj< 0.05 & abs(resCOVSC2_4vs24$log2FoldChange) >=1)
+
+resCOVSC2_4vs24Filt <- resCOVSC2_4vs24[!is.na(resCOVSC2_4vs24$padj) & resCOVSC2_4vs24$padj< 0.05 &abs(resCOVSC2_4vs24$log2FoldChange) >=1, ]
+resCOVSC2_4vs24Filt <- resCOVSC2_4vs24Filt[order(abs(resCOVSC2_4vs24Filt$log2FoldChange), decreasing = T),]
+resCOVSC2_4vs24Filt$gene <- DATA[rownames(resCOVSC2_4vs24Filt),2]
+write.table(resCOVSC2_4vs24Filt, file="../expressionData/DE_SARS-CoV-2_4_24_FC1.tab", quote = F,sep = "\t")
+```
+
+### Exploring DE results
+
+The following code is used for plotting the Venn Diagram for the number of differentially expressed genes 
+found in each comparison here analyzed and has beein used for generating the Fig2**B** of the manuscript. 
+
+```{r, results=FALSE, fig.width = 5, fig.height = 5}
+DEMockSC224 <- resCOVMockSC224Filt[,"gene"]
+DE4vs12 <- resCOVSC2_4vs12Filt[,"gene"]
+DE4vs24 <- resCOVSC2_4vs24Filt[,"gene"]
+
+area1 <- length(DEMockSC224)
+area2 <- length(DE4vs12)
+area3 <- length(DE4vs24)
+
+n12 <- length(which(DEMockSC224 %in% DE4vs12))
+n23 <- length(which(DE4vs12 %in% DE4vs24))
+n13 <- length(which(DEMockSC224 %in% DE4vs24))
+n123 <- length(which(DEMockSC224 %in% DE4vs12 & DEMockSC224 %in%DE4vs24 ))
+colors <- brewer.pal(3,"Set2")
+grid.newpage()
+draw.triple.venn(area1,area2,area3,n12, n23, n13, n123,
+                           category = c("IM24", "I12-4","I24-4") , 
+                           euler.d=T,
+                           fill = c(colors[3], colors[1:2]), 
+                           lty=c(3,3,3))
+```
+
+
+The information about DE status for each deregulated gene will be saved for being used in later processing steps.
+
+```{r}
+allDEGeneIDs <- unique(c(rownames(resCOVMockSC224Filt), 
+                      rownames(resCOVSC2_4vs12Filt),
+                      rownames(resCOVSC2_4vs24Filt)))
+allDEGeneNames <- DATA[allDEGeneIDs,"gene_name"]
+
+allDEGenes <- data.frame(gene=allDEGeneNames,
+                      logFCInfectedvsMock24=resCOVMockSC224[allDEGeneIDs,"log2FoldChange"],
+                      logFCInfected12vs4=resCOVSC2_4vs12[allDEGeneIDs,"log2FoldChange"],
+                      logFCInfected24vs4=resCOVSC2_4vs24[allDEGeneIDs,"log2FoldChange"],
+                      DEInfectedvsMock24=allDEGeneIDs%in%rownames(resCOVMockSC224Filt),
+                      DEInfected12vs4=allDEGeneIDs%in%rownames(resCOVSC2_4vs12Filt),
+                      DEInfected24vs4=allDEGeneIDs%in%rownames(resCOVSC2_4vs24Filt))
+
+write.table(allDEGenes, file="../expressionData/DE_SARS-CoV-2_Full_FC1.csv", row.names=F,
+            col.names = T, quote=F, sep = ",")
+
+```
+
+### Saving data for functional enrichment analysis
+
+For performing enrichment analysis of deregulated genes, the full list of expressed genes as well as the list of deregulated genes are required. The following code is aimed to save these lists for being used in downstream steps. 
+
+```{r}
+referenceList <- DATA[rownames(resCOVMockSC224),2]
+referenceList <- unique(c(referenceList,DATA[rownames(resCOVSC2_4vs12),2]))
+length(referenceList)
+
+write.table(referenceList, file="../expressionData/refGeneList.txt", quote = F,sep = "\t", 
+            row.names = F, col.names = F)
+```
+
+```{r}
+length(allDEGeneNames)
+write.table(allDEGeneNames, file="../expressionData/DEgenes_SARS-CoV-2_Full_FC1.txt", row.names=F,
+            col.names =F, quote=F)
+```
+

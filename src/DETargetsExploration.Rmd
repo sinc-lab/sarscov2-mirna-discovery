@@ -1,0 +1,62 @@
+---
+title: "Analyzing miRNAs targets deregulated in SARS-CoV-2 infection"
+output:
+  html_document:
+    df_print: paged
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This notebook is aimed to analyze the differential expression (DE) changes in the set
+of human genes that were predicted as potential targets of discovered viral miRNAs,
+due to SARS-CoV-2 infection in cell cultures of the Calu3 cell line, as it was described in the manuscript [*Novel SARS-CoV-2 encoded small RNAs in the passage to humans*](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa1002/6007256).
+
+
+```{r,echo=FALSE,include=FALSE}
+
+if (!("ggplot2" %in% rownames(installed.packages()))){
+    install.packages("ggplot2")
+}
+if (!("RColorBrewer" %in% rownames(installed.packages()))){
+    install.packages("RColorBrewer")
+}
+
+library(ggplot2)
+library(RColorBrewer)
+```
+
+## Exploring the number of deregulated targets
+
+The number of targets that were found as deregulated, for at least one of the comparisons performed during the differential expression analyis step has been summarized in the same file were the predicted mature miRNAs are described.
+
+```{r}
+datosMIRNAS <- read.csv("../matures/miRNAs.csv", header=T, sep=";")
+datosMIRNAS$pre.miRNA <- factor(as.character(datosMIRNAS$pre.miRNA), 
+                             levels=c("SC2V-mir-ORF1ab-1", "SC2V-mir-ORF1ab-2",
+                                      "SC2V-mir-M-1", "SC2V-mir-M-2","SC2V-mir-M-3", 
+                                      "SC2V-mir-ORF10"))
+datosMIRNAS$miRNA <- factor(as.character(datosMIRNAS$miRNA), 
+                         levels=unique(as.character(datosMIRNAS$miRNA)))
+
+head(datosMIRNAS)
+```
+
+The following code generates the Fig3**A** of the manuscript,
+```{r}
+colors2plot <- c("tomato2", "lightsalmon",  "darkgreen", "seagreen3",  "darkseagreen1", "darkmagenta")
+
+ggplot(datosMIRNAS,aes(x=miRNA, y=Number.of.Targets.DE, fill=pre.miRNA))+
+    geom_col(position=position_dodge2(width=0.9,preserve="single"))+
+    theme(strip.background =element_blank(),strip.text.x = element_blank(),
+          panel.background = element_blank(), panel.grid.minor = element_line(
+              colour="gray"), axis.line = element_line(colour="gray"), 
+          axis.text.x = element_text(angle=90, hjust = 1), axis.text = element_text(
+              size=11), legend.position = "None")+labs(x="Predicted miRNA", 
+                                                       y="Number of deregulated targets", fill="")+
+    scale_fill_manual(values=colors2plot)+
+    facet_grid(~pre.miRNA,scales="free_x", space = "free_x", switch = "x")+
+    guides(fill=guide_legend(ncol=3))
+
+```
+

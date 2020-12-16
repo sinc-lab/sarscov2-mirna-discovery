@@ -1,0 +1,73 @@
+---
+title: "Analyzing overrepresentation analysis results of deregulated targets"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This notebook contains the code neccessary to generate the Fig3**D** of the manuscript [*Novel SARS-CoV-2 encoded small RNAs in the passage to humans*](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa1002/6007256).
+
+```{r echo=FALSE, comment = ""}
+if (!("ggplot2" %in% rownames(installed.packages()))){
+    install.packages("ggplot2")
+}
+library(ggplot2)
+```
+
+The first step is to load the results of the overrepresentation analysis of differentially expressed targets for the PANTHER GO-Slim Biological Process annotation set and to select those terms having an enrichment higher than the average enrichment observed. 
+
+```{r}
+BPPANTHERBonferroni <- read.delim("../functionalEnrichment/DEtargets/PANTHER_BP_BONFERRONI.txt", 
+                               skip = 7, sep = "\t")
+
+BPSub <- BPPANTHERBonferroni[BPPANTHERBonferroni$fullTargetsDEFC1..fold.Enrichment.>
+                    mean(BPPANTHERBonferroni$fullTargetsDEFC1..fold.Enrichment.),]
+```
+
+
+The following lines are directed to group terms based on the GO hierarchy and to highlight the deepest term of each enriched arm.
+
+```{r}
+idx <- c(1,2,1,2,1,6,1,8,1,1,11,1,11,1,1,1,8,1,1,8)
+BPSub$Hierarchy <- BPSub$PANTHER.GO.Slim.Biological.Process[idx]
+aux=do.call(rbind,strsplit(do.call(rbind, strsplit(as.character(BPSub$Hierarchy), split="[(]"))[,2], "[)]"))[,1]
+BPSub$Hierarchy <- factor(as.character(BPSub$Hierarchy), levels = unique(BPSub$Hierarchy))
+
+BPSub$PANTHER.GO.Slim.Biological.Process <- factor(as.character(BPSub$PANTHER.GO.Slim.Biological.Process), levels = unique(BPSub$PANTHER.GO.Slim.Biological.Process))
+BPSub <- BPSub[order(BPSub$Hierarchy, BPSub$fullTargetsDEFC1..109.,decreasing = T),]
+
+boldIdx <- rep("plain", nrow(BPSub))
+for(i in 1:nrow(BPSub)){
+    aux <-BPSub$Hierarchy[i] == BPSub$PANTHER.GO.Slim.Biological.Process[i]
+    if(aux) boldIdx[i]="bold"
+}
+
+BPSub$boldIdx <-factor(boldIdx)
+
+midPoint <- 3
+```
+
+Now, we are ready for generating the plot shown in Fig2**C**. 
+
+```{r fig.width = 11, fig.height = 5}
+ggplot(BPSub, aes(y=PANTHER.GO.Slim.Biological.Process,x=fullTargetsDEFC1..fold.Enrichment., 
+                     fill=fullTargetsDEFC1..109.))+
+    geom_col(position = position_dodge2(width=0.9,preserve="single"))+
+    scale_fill_gradient2(low = "lavenderblush2", mid="pink",high = "magenta4", 
+                         midpoint = midPoint)+
+    labs(y="PANTHER GO-Slim BP", x="Enrichment fold",fill="Number of DEG")+
+    facet_grid(rows=vars(Hierarchy),scales = "free_y",space = "free_y")+ 
+    expand_limits(x = -26) +
+    # create a strip of white background under the fake axis
+    geom_rect(xmin = -20, xmax = 0, ymin = 0, ymax = nrow(BPPANTHERBonferroni)+1, fill = "white") +
+    geom_text(aes(fontface = boldIdx, label = PANTHER.GO.Slim.Biological.Process), 
+              x = -0.3, vjust = .5, hjust = 1, size =3.5) +
+    theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+          legend.position = c(0.94,0.6), legend.justification = c(0.5,0),strip.background =element_blank(),
+          strip.text= element_blank(), panel.background = element_blank(),
+          panel.grid.minor = element_line(colour="gray"), axis.line = element_blank(),axis.text = 
+          element_text(size=10))+
+    scale_x_continuous(breaks = c(seq(0,21,3)))
+```

@@ -1,0 +1,65 @@
+---
+title: "Analyzing overrepresentation analysis results of deregulated genes"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This notebook contains the code neccessary to generate the Fig2**C** of the manuscript [*Novel SARS-CoV-2 encoded small RNAs in the passage to humans*](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa1002/6007256).
+
+```{r echo=FALSE, comment = ""}
+if (!("ggplot2" %in% rownames(installed.packages()))){
+    install.packages("ggplot2")
+}
+library(ggplot2)
+```
+
+The first step is to load the results of the overrepresentation analysis of differentially expressed genes for the PANTHER GO-Slim Biological Process annotation set and to select the 30 most represented GO terms. 
+
+```{r}
+BPPANTHERBonferroni <- read.delim("../functionalEnrichment/DEgenes/PANTHER_BP_BONFERRONI.txt", 
+                               skip = 7, sep = "\t")
+
+BPSub <- BPPANTHERBonferroni[1:30,]
+```
+
+
+The following lines are directed to group terms based on the GO hierarchy and to highlight the deepest term of each enriched arm.
+
+```{r}
+
+boldIdx <- c("bold", "plain", rep("bold",2),"plain",rep("bold",6),"plain",
+          rep("plain",6), "bold", rep("plain", 2),rep("bold",7),"plain","bold")
+hierarchy <- as.character(BPPANTHERBonferroni[1:30,1][c(1,1,3,4,4,6:11,
+                                                     8,8,4,1,6,1,1,19,1,
+                                                     1,22:28,11,30)])
+BPSub$Hierarchy <- factor(hierarchy, levels=unique(hierarchy))
+BPSub$PANTHER.GO.Slim.Biological.Process <- factor(as.character(BPSub$PANTHER.GO.Slim.Biological.Process),
+                                                   levels = unique(BPSub$PANTHER.GO.Slim.Biological.Process))
+
+BPSub$boldIdx <- factor(boldIdx)
+BPSub <- BPSub[order(BPSub$Hierarchy, 
+                  BPSub$RefRNAseqClean...REFLIST..14012.,decreasing = TRUE),]
+
+midPoint <- 60
+```
+
+Now, we are ready for generating the plot shown in Fig2**C**. 
+
+```{r fig.width = 10, fig.height = 5}
+ggplot(BPSub, aes(y=PANTHER.GO.Slim.Biological.Process,x=fullDEGenesFC1Clean..fold.Enrichment., 
+                     fill=fullDEGenesFC1Clean..2301.))+geom_col(position = position_dodge2(width=0.9,preserve="single")
+                     )+scale_fill_gradient2(low = "lavenderblush2",mid="pink",high = "magenta4", midpoint = midPoint
+                     )+labs(y="PANTHER GO-Slim BP", x="Enrichment fold",fill="Number of DEG")+facet_grid(rows=vars(
+                         Hierarchy),scales = "free_y",space = "free_y")+ expand_limits(x = -4) +
+    # create a strip of white background under the fake axis
+    geom_rect(xmin = -4, xmax = 0, ymin = 0, ymax = nrow(BPSub)+1, fill = "white") +
+    geom_text(aes(fontface = boldIdx, label = PANTHER.GO.Slim.Biological.Process), x = -0.3, vjust = .5, hjust = 1, size =3) +
+    theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+          legend.position = c(0.94,0.19), strip.background =element_blank(),
+          strip.text= element_blank(), panel.background = element_blank(),
+          panel.grid.minor = element_line(colour="gray"), axis.line = element_blank(),axis.text = 
+              element_text(size=10), panel.spacing = unit(0.1, "lines"))+scale_x_continuous(breaks = c(0,2,4,6,8))
+```

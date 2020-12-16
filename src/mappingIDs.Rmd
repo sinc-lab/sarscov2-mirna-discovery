@@ -1,0 +1,70 @@
+---
+title: "Mapping Ensembl transcript IDs to gene names"
+output:
+  html_document:
+    df_print: paged
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This notebook is aimed to map the [Ensembl IDs](https://www.ensembl.org/info/genome/stable_ids/index.html) to [Gene names](https://www.genenames.org/) in order to obtain the set of genes that were 
+predicted as being targeted by each SARS-CoV-2 miRNA using [Diana MR Micro-T tool](http://diana.imis.athena-innovation.gr/DianaTools/index.php?r=mrmicrot/index). For achieving this goal, the [EnsDb.Hsapiens.v86](http://bioconductor.org/packages/release/data/annotation/html/EnsDb.Hsapiens.v86.html) R package will be used. 
+
+```{r, include=FALSE}
+if (!("EnsDb.Hsapiens.v86" %in% rownames(installed.packages()))){
+    if (!requireNamespace("BiocManager", quietly = TRUE))
+        install.packages("BiocManager")
+    BiocManager::install("EnsDb.Hsapiens.v86")
+}
+library(EnsDb.Hsapiens.v86)
+```
+
+The first step is to load the package and set the working directory to the folder
+where you have generated or downloaded the Diana prediction files, after filtering the transcripts having a prediction score of 70 or more. Then, Ensemble transcript IDs and the corresponding
+Gene Names for all the human transcripts in the Ensembl R package are selected. 
+
+```{r}
+edb <- EnsDb.Hsapiens.v86
+tx <- transcripts(edb, columns=c("tx_id", "gene_name"))
+mapping <- cbind(tx_id=tx$tx_id, name=tx$gene_name)
+rownames(mapping) <- mapping[, 1]
+head(mapping)
+```
+
+Since there are some differences between the version of Ensembl database used by Diana
+and the R package, we should add the mapping information for some transcripts.
+
+```{r}
+mapping <- rbind(mapping, "ENST00000622765"=c("ENST00000622765", "SLC25A21"),
+              "ENST00000357368"=c("ENST00000357368", "PTPRS"))
+
+mapping <- rbind(mapping, "ENST00000610431"=c("ENST00000610431","EPB41L2"),
+              "ENST00000403607"=c("ENST00000403607", "TENM2"),
+              "ENST00000589997"=c("ENST00000589997", "ST6GALNAC2"))
+
+mapping <- rbind(mapping, "ENST00000480462"=c("ENST00000480462", "FAM71F2"))
+mapping <- rbind(mapping, "ENST00000622046"=c("ENST00000622046", "MED25"))
+mapping <- rbind(mapping, "ENST00000536776"=c("ENST00000536776", "C21orf62"),
+              "ENST00000535029"=c("ENST00000535029", "DENND10"))
+mapping <- rbind(mapping, "ENST00000613175"=c("ENST00000613175", "TRGV5"),
+              "ENST00000335144"=c("ENST00000335144", "SPIN4"))
+mapping <- rbind(mapping, "ENST00000366562"=c("ENST00000366562", "RGS7"),
+              "ENST00000611416"=c("ENST00000611416", "CYP20A1"))
+```
+
+Once the mapping data is ready, we can load each Diana file and doing the mapping.
+
+```{r}
+files <- c(paste("SC2V-mir-",c("ORF1ab1-3p","ORF1ab2-5p", "M1-5p", "M2-3p", 
+                            "M3-5p", "M3-3p","ORF10-5p","ORF10-3p"),sep=""))
+for(file in files){
+    datos <- read.delim(paste("../targets/Diana/70/", file,".tab",sep=""), header=F, sep=" ")    
+    rownames(datos) <- datos[,1]
+    datos[,3] <- mapping[rownames(datos),"name"]
+    write.table(datos, paste("../targets/Diana/70/",file, "_gene.tab", sep=""), row.names = F,col.names = F,quote = F, sep="\t")
+}
+```
+

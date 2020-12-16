@@ -1,0 +1,56 @@
+---
+title: "Exploring the number of predicted viral miRNA targets"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This document is aimed to explore the number of targets predicted for each novel SARS-CoV-2 miRNA presented in the manuscript [*Novel SARS-CoV-2 encoded small RNAs in the passage to humans*](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa1002/6007256).
+
+
+```{r,echo=FALSE, include=FALSE}
+if (!("ggplot2" %in% rownames(installed.packages()))){
+    install.packages("ggplot2")
+}
+library(ggplot2)
+```
+
+For doing this, we will use the data provided in the repository. 
+
+```{r}
+datosMIRNAS <- read.csv("../matures/miRNAs.csv", header=T, sep=";")
+head(datosMIRNAS)
+```
+
+In order to establish the order for plotting, the code below will define variables as factors, with specific levels.
+
+```{r}
+datosMIRNAS$pre.miRNA <- factor(as.character(datosMIRNAS$pre.miRNA), 
+                             levels=c("SC2V-mir-ORF1ab-1", "SC2V-mir-ORF1ab-2",
+                                      "SC2V-mir-M-1", "SC2V-mir-M-2","SC2V-mir-M-3", 
+                                      "SC2V-mir-ORF10"))
+datosMIRNAS$miRNA <- factor(as.character(datosMIRNAS$miRNA), 
+                         levels=unique(as.character(datosMIRNAS$miRNA)))
+```
+
+Now, the following code will generate Fig2**A**.
+
+```{r}
+colors2plot <- c("tomato2", "lightsalmon",  "darkgreen", "seagreen3",  "darkseagreen1", "darkmagenta")
+
+ggplot(datosMIRNAS,aes(x=miRNA, y=Number.of.Targets, fill=pre.miRNA))+
+    geom_col(position=position_dodge2(width=0.9,preserve="single"))+
+    theme(strip.background =element_blank(),strip.text.x = element_blank(),
+          panel.background = element_blank(), panel.grid.minor = element_line(
+              colour="gray"), axis.line = element_line(colour="gray"), 
+    axis.text.x = element_text(angle=90, hjust = 1), axis.text = element_text(
+        size=11), legend.position = "None")+labs(x="Predicted miRNA", 
+    y="Number of targets", fill="")+
+    scale_fill_manual(values=colors2plot)+
+    facet_grid(~pre.miRNA,scales="free_x", space = "free_x", switch = "x")+
+    guides(fill=guide_legend(ncol=3))
+
+```
+

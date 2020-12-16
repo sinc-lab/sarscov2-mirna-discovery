@@ -1,0 +1,173 @@
+---
+title: "Analyzing miRNAs targets down-regulated in SARS-CoV-2 infection"
+output:
+  html_document:
+    df_print: paged
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This notebook is aimed to explore the expression changes and functional characterization in the set
+of human genes that were predicted as potential targets of discovered viral miRNAs and that were found as down-regulated during due to SARS-CoV-2 infection in cell cultures of the Calu3 cell line, as it was described in the manuscript [*Novel SARS-CoV-2 encoded small RNAs in the passage to humans*](https://academic.oup.com/bioinformatics/advance-article/doi/10.1093/bioinformatics/btaa1002/6007256).
+
+
+```{r,echo=FALSE,include=FALSE}
+
+if (!("ggplot2" %in% rownames(installed.packages()))){
+    install.packages("ggplot2")
+}
+if (!("RColorBrewer" %in% rownames(installed.packages()))){
+    install.packages("RColorBrewer")
+}
+if (!("tidyr" %in% rownames(installed.packages()))){
+    install.packages("tidyr")
+}
+if (!("dplyr" %in% rownames(installed.packages()))){
+    install.packages("dplyr")
+}
+if (!("GOplot" %in% rownames(installed.packages()))){
+    install.packages("GOplot")
+}
+if (!("cowplot" %in% rownames(installed.packages()))){
+    install.packages("cowplot")
+}
+library(ggplot2)
+library(RColorBrewer)
+library(tidyr)
+library(dplyr)
+library(GOplot)
+library(cowplot)
+```
+
+The data summarizing differential expression and functional characterization of the 28 deregulated targets is provided in the repository. We can load it doing
+
+```{r}
+DEDOWNTargets <- read.csv("../functionalEnrichment/DEDOWNTargets/FunctionalCharacterization.csv", header=T, sep=",")
+head(DEDOWNTargets)
+```
+
+## Exploring the expression changes
+
+There are one gene that was predicted as being targeted by two different miRNAs, we will split its row for obtaining two rows, one per miRNA.
+
+```{r}
+N <- nrow(DEDOWNTargets)
+#identifying the double-targeted gene
+doubleTarg <- which(lapply(strsplit(as.character(DEDOWNTargets$SARS.CoV.2.miRNA), ";"), length) ==2 )
+#duplicating the double-targeted gene
+DEDOWNTargets <- rbind(DEDOWNTargets, DEDOWNTargets[doubleTarg,])
+DEDOWNTargets[,1] <- as.character(DEDOWNTargets[,1])
+#indentifying the two miRNAs 
+miRNAs <- do.call(rbind,strsplit(as.character(DEDOWNTargets[doubleTarg,1]),";"))
+#assinging the two miRNAs 
+DEDOWNTargets[doubleTarg,1] <- miRNAs[,1]
+DEDOWNTargets[(N+1),1] <- miRNAs[,2]
+
+DEDOWNTargets[,1] <- factor(as.character(DEDOWNTargets[,1]))
+```
+
+The following code is aimed to prepare the data to be used for generating the Fig3*B* of the manuscript.
+
+```{r}
+
+DEDOWNTargets %>%
+    select(c(SARS.CoV.2.miRNA:logFCInfected24vs4,DEInfectedvsMock24:DEInfected24vs4)) %>%
+    pivot_longer(cols=logFCInfectedvsMock24:logFCInfected24vs4, 
+                 names_to="contrast", values_to="logFC") -> DEDOWNTargetsLong
+DEDOWNTargetsLong["DE"] <- FALSE
+DEDOWNTargetsLong[DEDOWNTargetsLong$contrast=="logFCInfectedvsMock24","DE"] <- DEDOWNTargetsLong[DEDOWNTargetsLong$contrast=="logFCInfectedvsMock24","DEInfectedvsMock24"]
+DEDOWNTargetsLong[DEDOWNTargetsLong$contrast=="logFCInfected12vs4","DE"] <- DEDOWNTargetsLong[DEDOWNTargetsLong$contrast=="logFCInfected12vs4","DEInfected12vs4"]
+DEDOWNTargetsLong[DEDOWNTargetsLong$contrast=="logFCInfected24vs4","DE"] <- DEDOWNTargetsLong[DEDOWNTargetsLong$contrast=="logFCInfected24vs4","DEInfected24vs4"]
+
+DEDOWNTargetsLong$contrast <- do.call(rbind,strsplit(DEDOWNTargetsLong$contrast,
+                                                   split="logFC"))[,2]
+DEDOWNTargetsLong$contrast <- factor(DEDOWNTargetsLong$contrast,
+                                       levels=c("Infected12vs4","Infected24vs4","InfectedvsMock24"))
+levels(DEDOWNTargetsLong$contrast) <- c("I12-4","I24-4", "IM24")
+DEDOWNTargetsLong$SARS.CoV.2.miRNA <- factor(
+    as.character(DEDOWNTargetsLong$SARS.CoV.2.miRNA),
+    levels=c("SC2V-mir-ORF1ab-1-3p", "SC2V-mir-M-1-5p","SC2V-mir-ORF10-5p","SC2V-mir-ORF10-3p")
+)
+DEDOWNTargetsLong$DE[DEDOWNTargetsLong$DE] <- "*"
+DEDOWNTargetsLong$DE[DEDOWNTargetsLong$DE!="*"] <- ""
+```
+
+Bar plot showing the fold change observed for the 28 targets at each differential expression contrast is generated as follows:
+
+```{r fig.width = 12, fig.height = 6}
+ggplot(DEDOWNTargetsLong, aes(x=Gene.Symbol, y=logFC, fill=contrast,
+    group=contrast))+ geom_bar(stat="identity", position="dodge")+
+    theme(legend.position = "bottom", strip.background =element_blank(),
+          panel.background = element_blank(),
+          panel.grid.minor = element_line(colour="gray"), 
+          axis.line = element_line(colour="gray"), 
+          axis.text.x = element_text(angle=90),
+          strip.text = element_text(size=6.5,margin = margin(r=-3,l=-3), 
+                                    face = "bold"),
+          plot.margin=unit(c(0.7,0.5,0.5,0.7),"cm"))+
+    labs(x="", fill="Contrast")+scale_fill_brewer(palette="Set2")+
+    geom_text(aes(y=logFC-0.2,label = DE),vjust = .5, hjust = .5, size =3,
+              position=position_dodge(width=0.9))+
+    facet_grid( ~SARS.CoV.2.miRNA, scales = "free_x",space = "free_x")
+
+```
+
+## Exploring the functional annotation
+
+The functional characterization results are encoded in several columns of the `DEDOWNTargets` `data.frame`, using `1` (`NA`) for indicating the gene is (is not) annotated with this function.
+
+```{r}
+colnames(DEDOWNTargets)[10:ncol(DEDOWNTargets)]
+```
+
+The graphical representation choosen for showing these results is that provided by the `GOChord` function of the [GOPlot R package](https://cran.r-project.org/web/packages/GOplot/index.html). 
+
+For using this function, it is required to define those columns having functional annotation as well as one column indicating the observed fold change. For this work, we selected to shown the minimum fold change observed in the differential analyses previously performed. 
+
+```{r}
+chordData <- DEDOWNTargets[1:N,c(10:17, 2,6)]
+colnames(chordData)[colnames(chordData)=="minLogFC"] <- "logFC"
+rownames(chordData) <- chordData[,"Gene.Symbol"]
+chordData <- chordData[rowSums(chordData[,1:8], na.rm = T)>=1, c(1:8,10)]
+chordData[is.na(chordData)] <- 0
+```
+
+Once data is ready to plot, the `GOChord` function is used for generating Fig3*C* of the manuscript.
+
+```{r fig.width = 7, fig.height = 5, warning=FALSE}
+cols <- c("Binding"="deepskyblue3", "Catalytic activity"="turquoise",
+       "Localization"="gold", "Developmental processes"="tan1",
+       "Cellular metabolic processes" ="purple",
+       "Response to stimulus"="pink1",
+       "Regulation of cellular processes"="mediumvioletred",
+       "Negative regulation of molecular function"="plum1")
+
+# base GOChord
+g <-GOChord(chordData, space=0.2, gene.order="logFC", gene.size=2.15, 
+          gene.space=0.24,border.size=0.15,
+          lfc.col=c('green','white','red4'),process.label=8, 
+          ribbon.col = c("deepskyblue3", "turquoise", "gold","tan1", 
+                         "purple", "pink1", "mediumvioletred","plum1"),
+          lfc.min=min(chordData$logFC),lfc.max=max(chordData$logFC))
+# extracting fold change legend
+FCLeg <- get_legend(g+guides(size=F)+
+    theme(legend.position = c(0.13,-0.25), 
+    legend.direction = "horizontal"))
+
+g <-g+guides(size = guide_legend("GO Terms", ncol = 1, byrow = T, 
+                               override.aes = list(shape = 22, fill = unique(cols), size = 3)),fill=F)+
+   theme(legend.key.size = unit(0.01, 'cm'), legend.text = element_text(size=8))
+#extracting functional terms legend
+FuncLeg <- get_legend(g+guides(color=FALSE)+
+     theme(legend.box.margin =unit(c(0,0,0,0), "cm"),
+     legend.spacing = unit(c(-0.1,-0.1,-0.1,-0.1), "cm"),
+     legend.position="right",
+     legend.direction = "vertical"))
+# final plot
+plot_grid(FCLeg,
+    plot_grid(g+theme(legend.position = "None", 
+    plot.margin = unit(c(0.1,0.1,0,0), "cm")),FuncLeg, 
+    ncol=2, rel_widths = c(0.64,0.36)),
+    nrow=2, rel_heights = c(0.07,0.93))
+```
