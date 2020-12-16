@@ -27,15 +27,15 @@ sarscov2-mirna-discovery
 |                                           the human genome, sampled from sequences that do not code 
 |   					    pre-miRNAs. Provided by external storage.
 │
-├── pre-miRNAs features
+├── pre-miRNAs_features
 │   ├── sars-cov2_hairpins.csv        -> Features extracted from sars-cov2_hairpins.fasta.
 │   ├── pre-miRNAs_virus.csv          -> Features extracted from pre-miRNAs_virus.fasta.
 │   └── unlabeled_hairpins.csv        -> Features extracted from unlabeled_hairpins.fasta. 
 |					     Provided by external storage.
 │
-├── pre-miRNAs models                 -> Trained models for pre-miRNA prediction.
+├── pre-miRNAs_models                 -> Trained models for pre-miRNA prediction.
 │
-├── pre-miRNAs predictions            -> Predictions on SARS-CoV2 hairpin sequences by each model.
+├── pre-miRNAs_predictions            -> Predictions on SARS-CoV2 hairpin sequences by each model.
 │
 ├── src
 |   ├── train_pre-miRNA_models.ipynb  -> Source code to train the pre-miRNAs prediction models.
@@ -68,7 +68,7 @@ sarscov2-mirna-discovery
 
 ##  2. Data preparation
 
-Note that all the results generated in this section are provided in  [`sequences/`](sequences)  and  [`features/`](features) directories.
+Note that all the results generated in this section are provided in  [`sequences/`](sequences)  and  [`pre-miRNAs_features/`](pre-miRNAs_features) directories.
 
 ### 2.1. Download complete genomes
 
@@ -125,7 +125,7 @@ The ".yaml" file is provided with the package.
 
 The [training notebook](src/train_pre-miRNA_models.ipynb) is provided with instructions to train the OC-SVM [[5]](#ref5), deeSOM [[6]](#ref6) and mirDNN [[7]](#ref7) classifiers. Doing so may take several hours. 
 
-If you want to directly predict the sequences, you can use the trained models that are provided in [`models/`](models) as explained in the following section.
+If you want to directly predict the sequences, you can use the trained models that are provided in [`pre-miRNAs_models/`](pre-miRNAs_models) as explained in the following section.
 
 ## 4. Finding pre-miRNAs candidates in SARS-CoV-2
 
@@ -135,7 +135,7 @@ The [prediction notebook](src/predict_pre-miRNAs.ipynb) is provided with instruc
 
 Once mature miRNAs were identified by combining MatureBayes predictions and the small RNA-seq reads profiles, their sequences (provided in  [`matures/miRNAs.csv`](matures/miRNAs.csv)) must be  submitted to [Diana MR MicroT](http://diana.imis.athena-innovation.gr/DianaTools/index.php?r=mrmicrot/index) and [miRDB (Custom prediction)](http://www.mirdb.org/custom.html) for predicting human gene targets. 
 
-The prediction files from miRDB and Diana MR Micro T, one per SARS-CoV-2 miRNA, are provided in the `[targets/miRDB/`](targets/miRDB/) and [`targets/Diana/`](targets/Diana) directories, respectively. Once you have downloaded them, you can run the following bash scripts for extracting the Ensembl identifiers (ID) and the score for each transcript predicted by Diana as being targeted for the viral miRNAs, with a prediction score of 70 or higher. 
+The prediction files from miRDB and Diana MR Micro T, one per SARS-CoV-2 miRNA, are provided in the [`targets/miRDB/`](targets/miRDB/) and [`targets/Diana/`](targets/Diana) directories, respectively. Once you have downloaded them, you can run the following bash scripts for extracting the Ensembl identifiers (ID) and the score for each transcript predicted by Diana as being targeted for the viral miRNAs, with a prediction score of 70 or higher. 
 
 ```bash
 sh ../src/extractIDs.sh
@@ -149,7 +149,7 @@ Once you have the Diana files ready (provided here in the [`targets/Diana/70/`](
 sh ../src/jointargets.sh
 ```
 
-After executing the code above, you will obtain eight files called `overlap_<mirna>.tab` with the set of human gene targets predicted for each  `mirna`  of the SARS-CoV-2 miRNA (provided here in the [`targets/`](targers) folder). You can explore the number of targets obtained for each miRNA and generate the Fig2**A** of [[1]](#ref1) by using the [targets exploration notebook](src/targetsExploration.Rmd).
+After executing the code above, you will obtain eight files called `overlap_<mirna>.tab` with the set of human gene targets predicted for each  `mirna`  of the SARS-CoV-2 miRNA (provided here in the [`targets/`](targets) folder). You can explore the number of targets obtained for each miRNA and generate the Fig2**A** of [[1]](#ref1) by using the [targets exploration notebook](src/targetsExploration.Rmd).
 
 
 ## 6. Analyzing the down-regulation of the predicted targets
@@ -157,7 +157,7 @@ After executing the code above, you will obtain eight files called `overlap_<mir
 
 Expression data from RNA-seq experiments involving Calu3 cell-cultures infected with SARS-CoV-2 was downloaded from GEO-NCBI [GSE148729](ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE148nnn/GSE148729/suppl/GSE148729_Calu3_polyA_series1_readcounts.tsv.gz). The [differential expression notebook](src/DifferentialExpression.Rmd) is provided with all the instructions to identify the set of differentially expressed genes. 
 
-After identifying the set of deregulated genes, you will be able to perform and analyze their functional enrichment by means of an overrepresentation analysis with [PANTHER](http://pantherdb.org/). For doing this, the [list of deregulated genes](‘expression_data/DEgenes_SARS-CoV-2_Full_FC1.txt’) should be used as the analyzed list and the [list of expressed genes](‘expression_data/refGeneList.txt’) as the reference list. The overrepresentation analysis is conducted by Fisher's exact test with the Bonferroni adjustment for p-value correction. The results for PANTHER GO-slim biological process (BP), PANTHER Pathways and Reactome Pathways annotation datasets are provided in the [‘functional_enrichment/DEgenes’](functional_enrichment/DEgenes) folder. The [overrepresentation analysis R notebook](src/ORADEGenes.Rmd) will guide you to obtain the graphical representation of the obtained results for the PANTHER GO-Slim BP set, shown in Fig2**C** of [[1]](#ref1).  
+After identifying the set of deregulated genes, you will be able to perform and analyze their functional enrichment by means of an overrepresentation analysis with [PANTHER](http://pantherdb.org/). For doing this, the [list of deregulated genes](expression_data/DEgenes_SARS-CoV-2_Full_FC1.txt) should be used as the analyzed list and the [list of expressed genes](expression_data/refGeneList.txt) as the reference list. The overrepresentation analysis is conducted by Fisher's exact test with the Bonferroni adjustment for p-value correction. The results for PANTHER GO-slim biological process (BP), PANTHER Pathways and Reactome Pathways annotation datasets are provided in the [‘functional_enrichment/DEgenes’](functional_enrichment/DEgenes) folder. The [overrepresentation analysis R notebook](src/ORADEGenes.Rmd) will guide you to obtain the graphical representation of the obtained results for the PANTHER GO-Slim BP set, shown in Fig2**C** of [[1]](#ref1).  
 
 ### 6.2 Identifying deregulated targets
 Once DE analyses have been conducted, the following bash code is used  to find the list of deregulated targets and the set of those potentially being silenced by the predicted viral miRNAs. 
@@ -168,14 +168,14 @@ sh src/deregulatedTargets.sh
 
 The previous bash script will create the ‘targets/targetsDE’ folder. Then, it will compare the miRNA targets and the RNA-seq differential expression (DE) results previously obtained (stored in the [‘expression_data/DE_SARS-CoV-2_Full_FC1.csv’](expression_data/DE_SARS-CoV-2_Full_FC1.csv) file). In the ‘targets/targetsDE’ folder, for each predicted SARS-CoV-2 miRNA, two files (‘overlapDE_overlap_SC2V-mir-<xxx>.tab’ and ‘overlapDOWN_overlap_SC2V-mir-<xxx>.tab’) will be generated, with the names of those genes that were found as deregulated and down-regulated for at least one of the differential expression analyses previously performed. The information contained in these files will be summarized, joining the results of all miRNA targets, in the files [‘targetsDE.txt’](targets/targetsDE/targetsDE.txt) and [‘targetsDEDOWN.txt’]](targets/targetsDE/targetsDEDOWN.txt). Finally, the script will also filter the [‘expression_data/DE_SARS-CoV-2_Full_FC1.csv’](expression_data/DE_SARS-CoV-2_Full_FC1.csv) file for keeping only those deregulated targets, generating the [‘targets/targetsDE/targetsDEgenes_SARS-CoV-2_Full_FC1.csv’](targets/targetsDE/TargetsDEgenes_SARS-CoV-2_Full_FC1.csv) file. 
 
-The number of deregulated targets for each miRNA is explored to generate Fig3**A** of the manuscript by using the [differentially expressed targets exploration notebook](src/DEtargetsExploration.Rmd).
+The number of deregulated targets for each miRNA is explored to generate Fig3**A** of the manuscript by using the [differentially expressed targets exploration notebook](src/DETargetsExploration.Rmd).
 
 ## 6.3 Functional characterization of deregulated targets
 As for analyzing functional enrichment of deregulated genes, the overrepresentation analysis of deregulated targets is also conducted by using [PANTHER](http://pantherdb.org/). Particularly, in this case, the full set of deregulated genes is used as reference list ([‘expression_data/DEgenes_SARS-CoV-2_Full_FC1.txt’](expression_data/DEgenes_SARS-CoV-2_Full_FC1.txt)) and the list of deregulated targets ([‘targets/targetsDE/targetsDE.txt’](targets/targetsDE/targetsDE.txt)) as analyzed list. The results for PANTHER GO-slim BP annotation dataset are provided in the ‘functionalEnrichment/DEtargets’ folder. The [targets overrepresentation analysis R notebook](src/ORADETargets.Rmd) will help you to obtain the graphical representation of the obtained results, shown in Fig3**D** of [[1]](#ref1).
 
 ### 6.4 Analysis of down-regulated targets
 
-The list of the 28 targets that were identified as down-regulated potentially being silenced by the novel SARS-CoV-2 miRNAs can be functionally characterized by using the functional classification tool of [PANTHER](http://pantherdb.org/). The results for this step, provided here in the [‘functional_enrichment/DEDOWNTargets/PANTHERClassification.txt’](functional_enrichment/DEDOWNTargets/PANTHERClassification.txt), were manually processed and combined with the DE results to generate a summary file, [‘functional_enrichment/DEDOWNTargets/FunctionalCharacterization.csv’](functional_enrichment/DEDOWNTargets/FunctionalCharacterization.csv). 
+The list of the 28 targets that were identified as down-regulated potentially being silenced by the novel SARS-CoV-2 miRNAs can be functionally characterized by using the functional classification tool of [PANTHER](http://pantherdb.org/). The results for this step, provided here in the [‘functional_enrichment/DEDOWNTargets/PANTHERClassification.txt’](functional_enrichment/DEDOWNtargets/PANTHERClassification.txt), were manually processed and combined with the DE results to generate a summary file, [‘functional_enrichment/DEDOWNtargets/FunctionalCharacterization.csv’](functional_enrichment/DEDOWNTargets/FunctionalCharacterization.csv). 
 
 The exploration of expression changes and functional characterization of down-regulated targets is carried out using the [down-regulated targets exploration notebook](src/DOWNDETargetsExploration.Rmd). Following it, you will be able to obtain Fig3*B* and Fig3*C* of [[1]](#ref1).  
 
