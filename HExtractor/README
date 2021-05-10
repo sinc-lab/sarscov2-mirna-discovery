@@ -1,0 +1,48 @@
+This is the version 1.0 of the HExtractor toolbox
+-------------------------------------------------
+The HExtractor toolbox can extract features from RNA sequences, its secondary structure and from alignments of sequences.
+
+The last version can be found at: http://sourceforge.net/projects/sourcesinc/files/hextractor/
+
+Contact
+- Cristian Yones <cyones@sinc.unl.edu.ar>
+- sinc(i):  http://fich.unl.edu.ar/sinc/
+
+Installation
+----------------
+For folding and alignment of sequences the toolbox uses some external well-known packages.
+The following software must be installed:
+
+- Vienna RNA: this package is used to fold sequences and alignments.
+Download: http://www.tbi.univie.ac.at/RNA/
+Tested version: 2.1.0 - 2.1.8
+
+- NCBI blast+: this package is used to identify the known miRNAs and the sequence to discard.
+Download: https://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs&DOC_TYPE=Download
+Tested version: 2.2.30
+
+The toolbox was developed on Matlab R2014a.
+To install the toolbox, download the zip file and unzip it.
+
+Directory structure
+-------------------
+In the root directory you can find these folders:
+ - config: contains a template of configuration files. It can be used as a base to write your custom genome-wide preprocessing.
+ - input: contains sample files of input sequences in fasta format.
+ - lib: the external libraries used are in this folder. Nowadays the only one is YAMLMatlab for config files reading.
+ - out: used to save the output fasta files.
+ - src: contains all the functions of the toolbox.
+
+Additionaly, there are some other files:
+ - HExtractor.m: the main function of the toolbox. See the next section of this README for more details.
+ - README: the file that you are reading.
+
+How to preprocess a genome
+------------------------
+To preprocess a genome, you must first write a config file in YAML where you can specify some parameters of the process. You can use one of the templates included in the folder "config". The parameters as defined in the sample configuration file works well in most of the cases.
+
+Then you need a file containing the raw genome in fasta format. In the input folder there is a portion of the human genome. To run HExtractor, call the main function:
+
+>> HExtractor('Example_human.fasta', 'Example_configuration_file.yaml', 'Example_pre-miRNA.fasta');
+
+This function creates 2 files in the "out" folder and automatically names them.

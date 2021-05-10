@@ -1,0 +1,38 @@
+---
+  # Number of bases in the windows.
+  window_size: 600
+
+  # Window step. This number defines indirectly the overlap: window_overlap=window_size-window_step
+  window_step: 100
+
+  # Minimum sequence length. Shorter sequences are discarded. (60)
+  min_seq_length: 60
+
+  # Minimum number of base-pairs that must form a sequence. (16)
+  min_bp: 16
+
+  # When the sequence is trimmed, at least min_bp+margin_bp base-pairs are left.
+  margin_bp: 6
+
+  # Each input sequence must have this quantity of valid nucleotides (not 'N') to be processed.
+  min_valid_nucleotides: 500
+  
+  # Only extract single loop sequence.
+  only_sloop: true
+
+  # e-value used in blast to match the extracted sequences with the sequences from the filter files.
+  blast_evalue: 10
+
+  # Identity threshold used to match sequences with the sequences from the filter files.
+  identity_threshold: 90
+
+  # Allows using more than one thread in the execution.
+  nthreads: 4
+  # Split each sequence in nworks to use less RAM memory. nworks = min(nthreads, nworks);
+  nworks: 4
+  
+  # Name of output file
+  name_out: 'sars-cov2_hairpins'
+
+  # Name of sequences
+  name_seq: 'covid19'
