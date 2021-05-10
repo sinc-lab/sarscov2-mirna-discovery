@@ -78,27 +78,26 @@ These ".fasta" files can be also found in this repository, in the [`genomes/`](g
 
 ### 2.2. Extract hairpin-like sequences
 
-The SARS-CoV-2 genome fasta file is cut in overlapping windows using the [Hextractor R package](https://cran.r-project.org/web/packages/HextractoR/index.html) [[2]](#ref2).
+The SARS-CoV-2 genome fasta file is cut in overlapping windows using the [HExtractor toolbox](https://doi.org/10.1101/2020.10.09.333898).
 
-You need to have the following software installed in your system:
-- [R](https://www.r-project.org/) 
-- [RNAfold](https://www.tbi.univie.ac.at/RNA/)
-- [BLAST](https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/)
+**Install HExtractor**
 
-In a R console, install and load the package with:
-```R
-> install.packages("snow")
-> install.packages("HextractoR")
-> library(HextractoR)
-```
+The toolbox uses some external well-known packages.
+The following software must be installed:
+- Vienna RNA: this package is used to fold sequences.
 
-Then, run the main script with the following parameters:    
+Tested versions: 2.1.0 - 2.1.8, 2.4.18.
+- NCBI blast+: this package is used to identify known pre-miRNAs.
 
-```R
-> HextractoR("genomes/NC_045512.2_Wuhan-Hu-1.fasta", min_valid_nucleotides = 500, window_size = 600, window_step = 100, only_sloop = T, min_length = 60, min_bp = 16, margin_bp = 6, blast_evalue = 0.005, identity_threshold = 90, nthreads = 4, nworks = 4, filter_files = { })
-```
+Tested versions: 2.2.30, 2.6.0-1.
+- Matlab
+Tested versions: R2014a, R2017a.
 
-This script generates a file with several hairpin-like sequences and its corresponding folding structure prediction. 
+To run HExtractor, move to the HExtractor folder and run the following in Matlab:
+
+>> HExtractor('NC_045512.2_Wuhan-Hu-1.fasta', 'sars-cov-2.yaml', 'pre-miRNAs_virus.fasta');
+
+This function creates the sars-cov2_hairpins.fasta  file in the "out" folder and automatically names them.
 
 To model the positive class, well known pre-miRNAs from viruses hairpins were extracted from [mirbase](http://www.mirbase.org/). These sequences were 	folded with RNAfold using the following commands:
 
